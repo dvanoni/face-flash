@@ -48,6 +48,14 @@ class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePick
     NSNotificationCenter.defaultCenter().removeObserver(self)
   }
 
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
+
+    // Refresh table view layout
+    self.tableView.beginUpdates()
+    self.tableView.endUpdates()
+  }
+
   func contentSizeCategoryChanged(notification: NSNotification) {
     self.tableView.reloadData()
   }
