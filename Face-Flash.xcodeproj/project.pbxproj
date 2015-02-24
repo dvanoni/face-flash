@@ -97,20 +97,12 @@
 		CA41FCAF1A9C372900D9EF9A /* Face-Flash */ = {
 			isa = PBXGroup;
 			children = (
-				CA41FCEA1A9C39C800D9EF9A /* Faces.storyboard */,
-				CA41FCEC1A9C39C800D9EF9A /* Quiz.storyboard */,
+				DF6F03031A9C5BBD00D6DFF3 /* Features */,
+				DF6F03041A9C5BEE00D6DFF3 /* Models */,
 				CA41FCD41A9C383200D9EF9A /* AppDelegate.swift */,
-				CA41FCD51A9C383200D9EF9A /* DataEntry.swift */,
-				CA41FCD61A9C383200D9EF9A /* Face.swift */,
-				CA41FCD71A9C383200D9EF9A /* FaceCell.swift */,
-				CA41FCD81A9C383200D9EF9A /* FacesTableViewController.swift */,
-				CA41FCD91A9C383200D9EF9A /* FaceViewController.swift */,
-				CA41FCDA1A9C383200D9EF9A /* FactCell.swift */,
-				CA41FCDB1A9C383200D9EF9A /* FactTextView.swift */,
-				CA41FCDC1A9C383200D9EF9A /* HomeViewController.swift */,
-				CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */,
-				CA41FCB61A9C372900D9EF9A /* Main.storyboard */,
 				CA41FCBB1A9C372900D9EF9A /* LaunchScreen.xib */,
+				CA41FCB61A9C372900D9EF9A /* Main.storyboard */,
+				CA41FCDC1A9C383200D9EF9A /* HomeViewController.swift */,
 				CA41FCB01A9C372900D9EF9A /* Supporting Files */,
 			);
 			path = "Face-Flash";
@@ -140,6 +132,46 @@
 				CA41FCC71A9C372900D9EF9A /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		DF6F03011A9C5B6700D6DFF3 /* Faces */ = {
+			isa = PBXGroup;
+			children = (
+				CA41FCEA1A9C39C800D9EF9A /* Faces.storyboard */,
+				CA41FCD81A9C383200D9EF9A /* FacesTableViewController.swift */,
+				CA41FCD91A9C383200D9EF9A /* FaceViewController.swift */,
+				CA41FCD71A9C383200D9EF9A /* FaceCell.swift */,
+				CA41FCDA1A9C383200D9EF9A /* FactCell.swift */,
+				CA41FCDB1A9C383200D9EF9A /* FactTextView.swift */,
+			);
+			name = Faces;
+			sourceTree = "<group>";
+		};
+		DF6F03021A9C5B7B00D6DFF3 /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				CA41FCEC1A9C39C800D9EF9A /* Quiz.storyboard */,
+				CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */,
+			);
+			name = Quiz;
+			sourceTree = "<group>";
+		};
+		DF6F03031A9C5BBD00D6DFF3 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				DF6F03011A9C5B6700D6DFF3 /* Faces */,
+				DF6F03021A9C5B7B00D6DFF3 /* Quiz */,
+			);
+			name = Features;
+			sourceTree = "<group>";
+		};
+		DF6F03041A9C5BEE00D6DFF3 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				CA41FCD51A9C383200D9EF9A /* DataEntry.swift */,
+				CA41FCD61A9C383200D9EF9A /* Face.swift */,
+			);
+			name = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
