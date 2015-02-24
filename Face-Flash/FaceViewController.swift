@@ -127,7 +127,9 @@ class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePick
             let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.cellIdentifier, forIndexPath: indexPath) as! FaceCell
             faceCell.updateFonts()
             faceCell.nameLabel.text = self.face.fullName
-            faceCell.faceImageView.image = self.face.imageQ
+            if let image = self.face.imageQ {
+                faceCell.faceImageView.image = image
+            }
             faceCell.imageEditButton.addTarget(self, action: "editFaceImage:", forControlEvents: .TouchUpInside)
             return faceCell
         case .Facts:

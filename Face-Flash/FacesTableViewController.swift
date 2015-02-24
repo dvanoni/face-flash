@@ -47,8 +47,10 @@ class FacesTableViewController: UITableViewController {
         
         // Configure the cell...
         cell.textLabel?.text = faceArray[indexPath.row].fullName
-        cell.imageView?.image = faceArray[indexPath.row].imageQ
-        
+        if let image = faceArray[indexPath.row].imageQ {
+            cell.imageView?.image = image
+        }
+
         return cell
     }
 
