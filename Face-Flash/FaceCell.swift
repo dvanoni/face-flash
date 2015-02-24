@@ -9,6 +9,8 @@
 import UIKit
 
 class FaceCell: UITableViewCell {
+
+    static let cellIdentifier = "FaceCell"
     
     @IBOutlet weak var faceImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!

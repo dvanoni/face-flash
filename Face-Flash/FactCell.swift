@@ -10,6 +10,8 @@ import UIKit
 
 class FactCell: UITableViewCell {
 
+    static let cellIdentifier = "FactCell"
+
     @IBOutlet weak var factTextView: FactTextView!
 
     override func awakeFromNib() {
