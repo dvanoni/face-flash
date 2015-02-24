@@ -8,10 +8,10 @@
 
 import UIKit
 
-private let defaultColor = UIColor.darkTextColor()
-private let addColor     = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
-
 class FactTextView: UITextView {
+
+    static let defaultColor = UIColor.darkTextColor()
+    static let addColor     = UIColor(red: 0.0, green: 122.0/255.0, blue: 1.0, alpha: 1.0)
 
     enum TextStyle {
         case Default, Add
@@ -22,10 +22,10 @@ class FactTextView: UITextView {
             switch self.style {
             case .Default:
                 self.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-                self.textColor = defaultColor
+                self.textColor = FactTextView.defaultColor
             case .Add:
                 self.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-                self.textColor = addColor
+                self.textColor = FactTextView.addColor
             }
         }
     }
