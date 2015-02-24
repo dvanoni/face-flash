@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FaceViewController: UITableViewController, UITextViewDelegate {
+class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     var face: Face!
 
@@ -54,6 +54,10 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
 
     // MARK: - Actions
 
+    func editFaceImage(sender: AnyObject) {
+        self.startImagePicker()
+    }
+
     func textEditDone(sender: AnyObject) {
         if let textView = self.activeTextView {
             textView.resignFirstResponder()
@@ -82,6 +86,22 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
         }
         return nil
     }
+
+    private func startImagePicker() -> Bool {
+        if !UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+            return false
+        }
+
+        let imagePicker = UIImagePickerController()
+        imagePicker.sourceType = .PhotoLibrary
+        // By default imagePicker.mediaTypes = [kUTTypeImage], which is what we want
+        imagePicker.allowsEditing = true
+        imagePicker.delegate = self
+
+        self.presentViewController(imagePicker, animated: true, completion: nil)
+
+        return true
+    }
     
     // MARK: - Table view data source
 
@@ -108,6 +128,7 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
             faceCell.updateFonts()
             faceCell.nameLabel.text = self.face.fullName
             faceCell.faceImageView.image = self.face.imageQ
+            faceCell.imageEditButton.addTarget(self, action: "editFaceImage:", forControlEvents: .TouchUpInside)
             return faceCell
         case .Facts:
             let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.cellIdentifier, forIndexPath: indexPath) as! FactCell
@@ -137,7 +158,7 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
         // Return NO if you do not want the specified item to be editable.
         switch Section(rawValue: indexPath.section)! {
         case .Face:
-            return false
+            return true
         case .Facts:
             return indexPath.row < self.face.factArray.count
         }
@@ -171,7 +192,26 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
     }
     
     // MARK: - Table view delegate
-    
+
+    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+        switch Section(rawValue: indexPath.section)! {
+        case .Face:
+            return .None
+        case .Facts:
+            return .Delete
+        }
+    }
+
+    override func tableView(tableView: UITableView, shouldIndentWhileEditingRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        switch Section(rawValue: indexPath.section)! {
+        case .Face:
+            return false
+        case .Facts:
+            return true
+        }
+
+    }
+
     override func tableView(tableView: UITableView, targetIndexPathForMoveFromRowAtIndexPath sourceIndexPath: NSIndexPath, toProposedIndexPath proposedDestinationIndexPath: NSIndexPath) -> NSIndexPath {
         if sourceIndexPath.section != proposedDestinationIndexPath.section {
             // Do not let a fact be moved out of the Facts section
@@ -256,6 +296,24 @@ class FaceViewController: UITableViewController, UITextViewDelegate {
                 setupAddFactTextView(textView as! FactTextView)
             }
         }
+    }
+
+    // MARK: - Image picker delegate
+
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        // Set edited image as new face image
+        let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
+        self.face.imageQ = editedImage
+
+        // Reload face cell
+        let faceCellIndexPath = NSIndexPath(forRow: 0, inSection: Section.Face.rawValue)
+        self.tableView.reloadRowsAtIndexPaths([faceCellIndexPath], withRowAnimation: .None)
+
+        picker.dismissViewControllerAnimated(true, completion: nil)
+    }
+
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        picker.dismissViewControllerAnimated(true, completion: nil)
     }
 
     /*

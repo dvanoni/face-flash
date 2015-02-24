@@ -4,6 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Faces-->
@@ -61,12 +62,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell userInteractionEnabled="NO" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="FaceCell" rowHeight="136" id="sjX-c9-oVz" customClass="FaceCell" customModule="Face_Flash" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FaceCell" rowHeight="137" id="sjX-c9-oVz" customClass="FaceCell" customModule="Face_Flash" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sjX-c9-oVz" id="RkA-y3-bS3">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3BE-yr-YNW">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3BE-yr-YNW">
                                             <rect key="frame" x="8" y="8" width="120" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="XxY-Th-ujw"/>
@@ -78,11 +79,35 @@
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7B6-36-E3w">
+                                            <rect key="frame" x="8" y="98" width="120" height="30"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="saZ-9j-nhz">
+                                                <rect key="frame" x="0.0" y="0.0" width="120" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="24D-5U-2AO">
+                                                        <rect key="frame" x="45" y="0.0" width="30" height="30"/>
+                                                        <state key="normal" title="Edit">
+                                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </state>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="bottom" secondItem="24D-5U-2AO" secondAttribute="bottom" id="GQn-ze-NaR"/>
+                                                    <constraint firstAttribute="centerX" secondItem="24D-5U-2AO" secondAttribute="centerX" id="SjS-Ui-Ray"/>
+                                                </constraints>
+                                            </view>
+                                            <blurEffect style="extraLight"/>
+                                        </visualEffectView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="7B6-36-E3w" firstAttribute="centerX" secondItem="3BE-yr-YNW" secondAttribute="centerX" id="1uR-aM-MAh"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="z6o-CZ-NZ0" secondAttribute="trailing" id="9xm-oP-lHK"/>
                                         <constraint firstItem="3BE-yr-YNW" firstAttribute="leading" secondItem="RkA-y3-bS3" secondAttribute="leadingMargin" id="BRC-Es-0Fj"/>
+                                        <constraint firstItem="7B6-36-E3w" firstAttribute="bottom" secondItem="3BE-yr-YNW" secondAttribute="bottom" id="JI7-f6-zay"/>
+                                        <constraint firstItem="7B6-36-E3w" firstAttribute="height" secondItem="3BE-yr-YNW" secondAttribute="height" multiplier="0.25" id="Wp4-RX-MdC"/>
                                         <constraint firstItem="z6o-CZ-NZ0" firstAttribute="leading" secondItem="3BE-yr-YNW" secondAttribute="trailing" constant="8" symbolic="YES" id="YKk-Vy-fOm"/>
+                                        <constraint firstItem="7B6-36-E3w" firstAttribute="width" secondItem="3BE-yr-YNW" secondAttribute="width" id="aSU-0l-gjW"/>
                                         <constraint firstItem="3BE-yr-YNW" firstAttribute="top" secondItem="z6o-CZ-NZ0" secondAttribute="top" constant="-8" id="dGf-qM-91Y"/>
                                         <constraint firstItem="3BE-yr-YNW" firstAttribute="top" secondItem="RkA-y3-bS3" secondAttribute="topMargin" id="kGP-TD-Chf"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="3BE-yr-YNW" secondAttribute="bottom" id="w3u-It-Imk"/>
@@ -90,6 +115,8 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="faceImageView" destination="3BE-yr-YNW" id="A3E-Rs-261"/>
+                                    <outlet property="imageEditButton" destination="24D-5U-2AO" id="nb2-k5-e8t"/>
+                                    <outlet property="imageEditContainerView" destination="7B6-36-E3w" id="m6b-ql-Eb2"/>
                                     <outlet property="nameLabel" destination="z6o-CZ-NZ0" id="hkG-GV-rs2"/>
                                 </connections>
                             </tableViewCell>
