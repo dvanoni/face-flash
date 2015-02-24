@@ -10,26 +10,26 @@ import UIKit
 
 class FaceCell: UITableViewCell {
 
-    static let cellIdentifier = "FaceCell"
-    
-    @IBOutlet weak var faceImageView: UIImageView!
-    @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
-    @IBOutlet weak var imageEditButton: UIButton!
-    @IBOutlet weak var nameLabel: UILabel!
+  static let cellIdentifier = "FaceCell"
 
-    override func awakeFromNib() {
-        super.awakeFromNib()
+  @IBOutlet weak var faceImageView: UIImageView!
+  @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
+  @IBOutlet weak var imageEditButton: UIButton!
+  @IBOutlet weak var nameLabel: UILabel!
 
-        updateFonts()
-    }
+  override func awakeFromNib() {
+    super.awakeFromNib()
 
-    override func setEditing(editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
+    updateFonts()
+  }
 
-        imageEditContainerView.hidden = !editing
-    }
+  override func setEditing(editing: Bool, animated: Bool) {
+    super.setEditing(editing, animated: animated)
 
-    func updateFonts() {
-        nameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-    }
+    imageEditContainerView.hidden = !editing
+  }
+
+  func updateFonts() {
+    nameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+  }
 }

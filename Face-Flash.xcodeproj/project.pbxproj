@@ -83,7 +83,9 @@
 				CA41FCC51A9C372900D9EF9A /* Face-FlashTests */,
 				CA41FCAE1A9C372900D9EF9A /* Products */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		CA41FCAE1A9C372900D9EF9A /* Products */ = {
 			isa = PBXGroup;

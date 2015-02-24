@@ -10,36 +10,36 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
-        // JSS: This is a temporary initialization
-        addHardCodedFaces()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    // Do any additional setup after loading the view, typically from a nib.
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+    // JSS: This is a temporary initialization
+    addHardCodedFaces()
+  }
 
-    private func presentStoryboard(name: String) {
-        let storyboard = UIStoryboard(name: name, bundle: nil)
-        if let initialController = storyboard.instantiateInitialViewController() as? UIViewController
-        {
-          self.presentViewController(initialController, animated: true, completion: nil)
-        }
-    }
+  override func didReceiveMemoryWarning() {
+    super.didReceiveMemoryWarning()
+    // Dispose of any resources that can be recreated.
+  }
 
-    @IBAction func onFacesPressed(sender: UIButton) {
-        presentStoryboard("Faces")
+  private func presentStoryboard(name: String) {
+    let storyboard = UIStoryboard(name: name, bundle: nil)
+    if let initialController = storyboard.instantiateInitialViewController() as? UIViewController
+    {
+      self.presentViewController(initialController, animated: true, completion: nil)
     }
+  }
 
-    @IBAction func onQuizPressed(sender: UIButton) {
-        presentStoryboard("Quiz")
-    }
+  @IBAction func onFacesPressed(sender: UIButton) {
+    presentStoryboard("Faces")
+  }
 
-    @IBAction func unwindToHome(segue: UIStoryboardSegue) {
-    }
+  @IBAction func onQuizPressed(sender: UIButton) {
+    presentStoryboard("Quiz")
+  }
+
+  @IBAction func unwindToHome(segue: UIStoryboardSegue) {
+  }
 }
 
