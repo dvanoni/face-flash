@@ -10,7 +10,7 @@ import UIKit
 
 class FacesTableViewController: UITableViewController {
 
-  let faceArray = FaceArray.getArray()
+  private let faceArray = FaceArray.getArray()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -30,15 +30,16 @@ class FacesTableViewController: UITableViewController {
   // MARK: - Table view data source
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    // #warning Potentially incomplete method implementation.
     // Return the number of sections.
     return 1
   }
 
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    // #warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return faceArray.count
+    if section == 0 {
+      return faceArray.count
+    }
+    return 0
   }
 
 
@@ -96,9 +97,11 @@ class FacesTableViewController: UITableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     if segue.identifier == "ShowFace" {
       // Pass the selected Face to the new view controller
-      let selectedRow: Int = self.tableView.indexPathForSelectedRow()!.row
-      let faceViewController: FaceViewController = segue.destinationViewController as! FaceViewController
-      faceViewController.face = faceArray[selectedRow]
+      let possibleRow = self.tableView.indexPathForSelectedRow()?.row
+      let possibleController = segue.destinationViewController as? FaceViewController
+      if let selectedRow = possibleRow, faceViewController = possibleController {
+        faceViewController.face = faceArray[selectedRow]
+      }
     }
   }
 
