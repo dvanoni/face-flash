@@ -138,6 +138,9 @@ class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePick
       if let image = self.face.imageQ {
         faceCell.faceImageView.image = image
       }
+      else {
+        faceCell.imageEditButton.setTitle("Add Photo", forState: .Normal)
+      }
       faceCell.imageEditButton.addTarget(self, action: "editFaceImage:", forControlEvents: .TouchUpInside)
       return faceCell
     case .Facts:
