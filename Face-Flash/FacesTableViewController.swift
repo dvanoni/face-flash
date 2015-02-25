@@ -12,6 +12,8 @@ class FacesTableViewController: UITableViewController {
 
   private let faceArray = FaceArray.getArray()
 
+  private var selectedIndexPath: NSIndexPath?
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -22,9 +24,14 @@ class FacesTableViewController: UITableViewController {
     // self.navigationItem.rightBarButtonItem = self.editButtonItem()
   }
 
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-    // Dispose of any resources that can be recreated.
+  override func viewWillAppear(animated: Bool) {
+    super.viewWillAppear(animated)
+
+    // Reload selected row when returning from detail view
+    if let indexPath = selectedIndexPath where tableView.hasRowAtIndexPath(indexPath) {
+      tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+    }
+    selectedIndexPath = nil
   }
 
   // MARK: - Table view data source
@@ -53,6 +60,10 @@ class FacesTableViewController: UITableViewController {
     }
 
     return cell
+  }
+
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    selectedIndexPath = indexPath
   }
 
   /*
@@ -105,4 +116,15 @@ class FacesTableViewController: UITableViewController {
     }
   }
 
+}
+
+private extension UITableView {
+  func hasRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+    if indexPath.section < self.numberOfSections() {
+      if indexPath.row < self.numberOfRowsInSection(indexPath.section) {
+        return true
+      }
+    }
+    return false
+  }
 }
