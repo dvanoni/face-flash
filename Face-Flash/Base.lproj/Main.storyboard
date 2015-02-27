@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Home View Controller-->
@@ -16,8 +17,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACE FLASH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N9-H9-LPv">
+                                <rect key="frame" x="197" y="135" width="206" height="50"/>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="36"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47V-bZ-93p">
-                                <rect key="frame" x="279" y="285" width="42" height="30"/>
+                                <rect key="frame" x="278" y="300" width="45" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Faces">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -26,7 +34,8 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzP-6d-w7z">
-                                <rect key="frame" x="279" y="345" width="42" height="30"/>
+                                <rect key="frame" x="283" y="362" width="34" height="32"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                 <state key="normal" title="Quiz">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,25 +43,33 @@
                                     <action selector="onQuizPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rYc-Ew-Rsg"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACE FLASH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N9-H9-LPv">
-                                <rect key="frame" x="249" y="109" width="102" height="21"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5U-t4-ZQw">
+                                <rect key="frame" x="250" y="30" width="100" height="95"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="102" id="HIa-Lo-lcQ"/>
-                                    <constraint firstAttribute="height" constant="21" id="PA9-k4-f0I"/>
+                                    <constraint firstAttribute="width" constant="100" id="7nZ-HP-fTG"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="bAY-Lc-Y5A"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-5N-VRv">
+                                <rect key="frame" x="250" y="195" width="100" height="95"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="cED-Ty-EnT"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="47V-bZ-93p" firstAttribute="leading" secondItem="WzP-6d-w7z" secondAttribute="leading" id="HU9-ok-B4X"/>
-                            <constraint firstItem="47V-bZ-93p" firstAttribute="centerY" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="J3R-tP-kye"/>
+                            <constraint firstAttribute="centerX" secondItem="47V-bZ-93p" secondAttribute="centerX" id="93M-ix-Wy1"/>
+                            <constraint firstItem="47V-bZ-93p" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="J3R-tP-kye"/>
                             <constraint firstItem="WzP-6d-w7z" firstAttribute="top" secondItem="47V-bZ-93p" secondAttribute="bottom" constant="30" id="Mm5-fy-mpT"/>
-                            <constraint firstItem="3N9-H9-LPv" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="89" id="OAo-19-dwb"/>
+                            <constraint firstAttribute="centerX" secondItem="y5U-t4-ZQw" secondAttribute="centerX" id="Twb-7B-0cQ"/>
+                            <constraint firstItem="y5U-t4-ZQw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="YUh-1H-PfU"/>
+                            <constraint firstItem="3N9-H9-LPv" firstAttribute="top" secondItem="y5U-t4-ZQw" secondAttribute="bottom" constant="10" id="dQt-8f-05d"/>
+                            <constraint firstItem="bsh-5N-VRv" firstAttribute="top" secondItem="3N9-H9-LPv" secondAttribute="bottom" constant="10" id="eqC-yH-wDw"/>
+                            <constraint firstAttribute="centerY" secondItem="bsh-5N-VRv" secondAttribute="bottom" constant="10" id="goV-Zn-TII"/>
                             <constraint firstAttribute="centerX" secondItem="3N9-H9-LPv" secondAttribute="centerX" id="hVd-xM-JH2"/>
-                            <constraint firstItem="WzP-6d-w7z" firstAttribute="trailing" secondItem="47V-bZ-93p" secondAttribute="trailing" id="mcc-Cv-vzS"/>
+                            <constraint firstAttribute="centerX" secondItem="bsh-5N-VRv" secondAttribute="centerX" id="nvD-MP-Som"/>
+                            <constraint firstItem="y5U-t4-ZQw" firstAttribute="height" secondItem="bsh-5N-VRv" secondAttribute="height" id="rjj-wo-uUr"/>
                             <constraint firstItem="WzP-6d-w7z" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="vgH-2W-yha"/>
                         </constraints>
                     </view>
