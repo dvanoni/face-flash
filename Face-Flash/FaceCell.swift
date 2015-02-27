@@ -15,7 +15,7 @@ class FaceCell: UITableViewCell {
   @IBOutlet weak var faceImageView: UIImageView!
   @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
   @IBOutlet weak var imageEditButton: UIButton!
-  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var nameTextField: UITextField!
 
   override func awakeFromNib() {
     super.awakeFromNib()
@@ -27,9 +27,11 @@ class FaceCell: UITableViewCell {
     super.setEditing(editing, animated: animated)
 
     imageEditContainerView.hidden = !editing
+    nameTextField.enabled = editing
+    nameTextField.borderStyle = editing ? .RoundedRect : .None
   }
 
   func updateFonts() {
-    nameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    nameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
   }
 }

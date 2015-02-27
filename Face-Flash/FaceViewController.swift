@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FaceViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
   var face: Face!
 
@@ -134,7 +134,8 @@ class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePick
     case .Face:
       let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.cellIdentifier, forIndexPath: indexPath) as! FaceCell
       faceCell.updateFonts()
-      faceCell.nameLabel.text = self.face.fullName
+      faceCell.nameTextField.text = self.face.fullName
+      faceCell.nameTextField.delegate = self
       if let image = self.face.imageQ {
         faceCell.faceImageView.image = image
       }
@@ -237,6 +238,19 @@ class FaceViewController: UITableViewController, UITextViewDelegate, UIImagePick
     }
     // Allow the proposed destination
     return proposedDestinationIndexPath
+  }
+
+  // MARK: - Text field delegate
+
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    // Dismiss keyboard when return key is pressed
+    textField.resignFirstResponder()
+    return false
+  }
+
+  func textFieldDidEndEditing(textField: UITextField) {
+    // TODO: Save changes to name
+    println("set name to: \(textField.text)")
   }
 
   // MARK: - Text view delegate
