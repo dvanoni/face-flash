@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14D72i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gag-Rn-BFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gag-Rn-BFw">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Quiz Image View Controller-->
@@ -16,14 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-PO-4rp">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="0.0" y="87" width="400" height="400"/>
-                                </variation>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pm-6d-GNj">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7pm-6d-GNj">
+                                <rect key="frame" x="275" y="550" width="51" height="30"/>
                                 <state key="normal" title="Answer">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -34,8 +30,22 @@
                                     <segue destination="cWa-Va-9hW" kind="show" id="jfe-ui-oJk"/>
                                 </connections>
                             </button>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-PO-4rp">
+                                <rect key="frame" x="16" y="30" width="568" height="450"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="0.0" y="87" width="400" height="400"/>
+                                </variation>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="bpO-PO-4rp" firstAttribute="top" secondItem="eW2-fC-js5" secondAttribute="bottom" constant="10" id="efC-ib-RbQ"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bpO-PO-4rp" secondAttribute="trailing" id="hUR-vK-Ryn"/>
+                            <constraint firstItem="bpO-PO-4rp" firstAttribute="leading" secondItem="9At-V9-wMd" secondAttribute="leadingMargin" id="kEW-vH-5Go"/>
+                            <constraint firstItem="bpO-PO-4rp" firstAttribute="height" secondItem="9At-V9-wMd" secondAttribute="height" multiplier="3:4" id="rcL-fZ-vt8"/>
+                            <constraint firstItem="LXb-Y1-Sev" firstAttribute="top" secondItem="7pm-6d-GNj" secondAttribute="bottom" constant="20" id="toc-TN-LfB"/>
+                            <constraint firstAttribute="centerX" secondItem="7pm-6d-GNj" secondAttribute="centerX" id="ugc-vn-HAw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pp1-Wo-g2x"/>
                     <connections>
@@ -58,8 +68,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o56-iL-ZLR">
-                                <rect key="frame" x="0.0" y="-21" width="42" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o56-iL-ZLR">
+                                <rect key="frame" x="279" y="40" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -67,8 +77,18 @@
                                     <rect key="frame" x="23" y="46" width="278" height="21"/>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOE-aC-ho0">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YJ3-FP-5p6">
+                                <rect key="frame" x="16" y="90" width="568" height="420"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="16" y="110" width="368" height="500"/>
+                                </variation>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HOE-aC-ho0">
+                                <rect key="frame" x="284" y="550" width="32" height="30"/>
                                 <state key="normal" title="Next">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -79,18 +99,18 @@
                                     <segue destination="Gag-Rn-BFw" kind="show" id="gXR-bY-AxO"/>
                                 </connections>
                             </button>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YJ3-FP-5p6">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="110" width="368" height="500"/>
-                                </variation>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="YJ3-FP-5p6" secondAttribute="centerY" id="BKW-vN-N1y"/>
+                            <constraint firstAttribute="centerX" secondItem="HOE-aC-ho0" secondAttribute="centerX" id="FGX-XG-NwY"/>
+                            <constraint firstItem="YJ3-FP-5p6" firstAttribute="leading" secondItem="vJQ-Gu-UuI" secondAttribute="leadingMargin" id="dlD-15-QeG"/>
+                            <constraint firstItem="RWS-d9-i5l" firstAttribute="top" secondItem="HOE-aC-ho0" secondAttribute="bottom" constant="20" id="lcH-tL-Hku"/>
+                            <constraint firstItem="o56-iL-ZLR" firstAttribute="top" secondItem="FZd-bV-fst" secondAttribute="bottom" constant="20" id="nPu-VL-18v"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="YJ3-FP-5p6" secondAttribute="trailing" id="oM0-7S-D7C"/>
+                            <constraint firstItem="YJ3-FP-5p6" firstAttribute="height" secondItem="vJQ-Gu-UuI" secondAttribute="height" multiplier="0.7" id="r2d-b9-VSA"/>
+                            <constraint firstAttribute="centerX" secondItem="o56-iL-ZLR" secondAttribute="centerX" id="zgj-dV-Cbp"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="sIo-3R-qza"/>
                     <connections>
