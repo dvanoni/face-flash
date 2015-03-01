@@ -26,7 +26,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="UserIcon" id="KEE-0w-ocs">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="FaceCellIcon" id="KEE-0w-ocs">
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
                                     </subviews>
@@ -42,16 +42,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Faces" id="nnz-Js-dCy">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="kHu-nc-yoD">
-                            <connections>
-                                <segue destination="Xpg-du-3Hu" kind="unwind" identifier="UnwindToHome" unwindAction="unwindToHome:" id="QCb-4h-Yl8"/>
-                            </connections>
-                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gS1-um-qkn"/>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m13-6T-ruX" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="Xpg-du-3Hu" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2945" y="350"/>
         </scene>
@@ -69,7 +63,7 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="sjX-c9-oVz" id="RkA-y3-bS3">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3BE-yr-YNW">
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceViewIcon" translatesAutoresizingMaskIntoConstraints="NO" id="3BE-yr-YNW">
                                             <rect key="frame" x="8" y="8" width="120" height="120"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="120" id="XxY-Th-ujw"/>
@@ -161,20 +155,24 @@
             </objects>
             <point key="canvasLocation" x="3668" y="350"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Faces-->
         <scene sceneID="nSM-wP-l74">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IiM-UI-omB" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="IiM-UI-omB" customClass="FacesNavigationController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Faces" image="FaceTabBarIcon" id="shu-QV-t9H">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="FaceTabBarIconSelected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0i5-GQ-kgv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="j7Y-oG-4Id">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
+                        <outlet property="facesTabBarItem" destination="shu-QV-t9H" id="coW-Az-Tem"/>
                         <segue destination="fb5-CJ-vIN" kind="relationship" relationship="rootViewController" id="dkX-8C-WdH"/>
                     </connections>
                 </navigationController>
@@ -184,6 +182,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="UserIcon" width="120" height="120"/>
+        <image name="FaceCellIcon" width="44" height="44"/>
+        <image name="FaceTabBarIcon" width="25" height="25"/>
+        <image name="FaceTabBarIconSelected" width="25" height="25"/>
+        <image name="FaceViewIcon" width="120" height="120"/>
     </resources>
 </document>

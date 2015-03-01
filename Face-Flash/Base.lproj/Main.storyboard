@@ -1,83 +1,23 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="vXZ-lx-hvc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cgp-T1-5uG">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
-        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
-        <!--Home View Controller-->
-        <scene sceneID="ufC-wZ-h7g">
+        <!--Main Tab Bar Controller-->
+        <scene sceneID="lds-d1-OLK">
             <objects>
-                <viewController id="vXZ-lx-hvc" customClass="HomeViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
-                        <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FACE FLASH" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3N9-H9-LPv">
-                                <rect key="frame" x="197" y="135" width="206" height="50"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="36"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="47V-bZ-93p">
-                                <rect key="frame" x="278" y="300" width="45" height="32"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Faces">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onFacesPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="c2Y-AE-zry"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WzP-6d-w7z">
-                                <rect key="frame" x="283" y="362" width="34" height="32"/>
-                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
-                                <state key="normal" title="Quiz">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="onQuizPressed:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="rYc-Ew-Rsg"/>
-                                </connections>
-                            </button>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y5U-t4-ZQw">
-                                <rect key="frame" x="250" y="30" width="100" height="95"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="7nZ-HP-fTG"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="10" id="bAY-Lc-Y5A"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bsh-5N-VRv">
-                                <rect key="frame" x="250" y="195" width="100" height="95"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="cED-Ty-EnT"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="centerX" secondItem="47V-bZ-93p" secondAttribute="centerX" id="93M-ix-Wy1"/>
-                            <constraint firstItem="47V-bZ-93p" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="centerY" id="J3R-tP-kye"/>
-                            <constraint firstItem="WzP-6d-w7z" firstAttribute="top" secondItem="47V-bZ-93p" secondAttribute="bottom" constant="30" id="Mm5-fy-mpT"/>
-                            <constraint firstAttribute="centerX" secondItem="y5U-t4-ZQw" secondAttribute="centerX" id="Twb-7B-0cQ"/>
-                            <constraint firstItem="y5U-t4-ZQw" firstAttribute="top" secondItem="jyV-Pf-zRb" secondAttribute="bottom" constant="10" id="YUh-1H-PfU"/>
-                            <constraint firstItem="3N9-H9-LPv" firstAttribute="top" secondItem="y5U-t4-ZQw" secondAttribute="bottom" constant="10" id="dQt-8f-05d"/>
-                            <constraint firstItem="bsh-5N-VRv" firstAttribute="top" secondItem="3N9-H9-LPv" secondAttribute="bottom" constant="10" id="eqC-yH-wDw"/>
-                            <constraint firstAttribute="centerY" secondItem="bsh-5N-VRv" secondAttribute="bottom" constant="10" id="goV-Zn-TII"/>
-                            <constraint firstAttribute="centerX" secondItem="3N9-H9-LPv" secondAttribute="centerX" id="hVd-xM-JH2"/>
-                            <constraint firstAttribute="centerX" secondItem="bsh-5N-VRv" secondAttribute="centerX" id="nvD-MP-Som"/>
-                            <constraint firstItem="y5U-t4-ZQw" firstAttribute="height" secondItem="bsh-5N-VRv" secondAttribute="height" id="rjj-wo-uUr"/>
-                            <constraint firstItem="WzP-6d-w7z" firstAttribute="centerX" secondItem="kh9-bI-dsS" secondAttribute="centerX" id="vgH-2W-yha"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="k8S-Qc-piw"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
+                <tabBarController id="Cgp-T1-5uG" customClass="MainTabBarController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedBottomBarMetrics"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="R2U-UB-dpE">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eFO-AB-jfn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="717"/>
+            <point key="canvasLocation" x="1054" y="990"/>
         </scene>
     </scenes>
 </document>

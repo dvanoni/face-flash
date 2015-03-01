@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Gag-Rn-BFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7519.1" systemVersion="14D87h" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="apu-NP-Qh8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7513.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -27,7 +27,7 @@
                                     <rect key="frame" x="305" y="28" width="51" height="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="cWa-Va-9hW" kind="show" id="jfe-ui-oJk"/>
+                                    <segue destination="cWa-Va-9hW" kind="presentation" id="jfe-ui-oJk"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="bpO-PO-4rp">
@@ -47,7 +47,6 @@
                             <constraint firstAttribute="centerX" secondItem="7pm-6d-GNj" secondAttribute="centerX" id="ugc-vn-HAw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="pp1-Wo-g2x"/>
                     <connections>
                         <outlet property="imageView" destination="bpO-PO-4rp" id="KdS-Af-r3c"/>
                     </connections>
@@ -59,7 +58,7 @@
         <!--Quiz Fact View Controller-->
         <scene sceneID="Doo-e3-1rh">
             <objects>
-                <viewController id="cWa-Va-9hW" customClass="QuizFactViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalTransitionStyle="flipHorizontal" id="cWa-Va-9hW" customClass="QuizFactViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FZd-bV-fst"/>
                         <viewControllerLayoutGuide type="bottom" id="RWS-d9-i5l"/>
@@ -96,7 +95,7 @@
                                     <rect key="frame" x="324" y="42" width="32" height="30"/>
                                 </variation>
                                 <connections>
-                                    <segue destination="Gag-Rn-BFw" kind="show" id="gXR-bY-AxO"/>
+                                    <segue destination="Gag-Rn-BFw" kind="presentation" id="gXR-bY-AxO"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -112,7 +111,6 @@
                             <constraint firstAttribute="centerX" secondItem="o56-iL-ZLR" secondAttribute="centerX" id="zgj-dV-Cbp"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="sIo-3R-qza"/>
                     <connections>
                         <outlet property="factTextView" destination="YJ3-FP-5p6" id="0Bb-Oq-Hel"/>
                         <outlet property="nameLabel" destination="o56-iL-ZLR" id="PYN-qE-fM3"/>
@@ -120,7 +118,110 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lTy-JY-sn4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2814" y="999"/>
+            <point key="canvasLocation" x="2820" y="999"/>
+        </scene>
+        <!--Quiz-->
+        <scene sceneID="rhZ-8s-G88">
+            <objects>
+                <tableViewController id="apu-NP-Qh8" customClass="QuizOptionsViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="KFb-Ba-fAs">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Quiz Options" id="BZM-MA-jZq">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="s5k-z6-ujp" style="IBUITableViewCellStyleDefault" id="cAa-ij-EhY">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAa-ij-EhY" id="mZY-L8-ngp">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Option 1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="s5k-z6-ujp">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="XB2-5f-Zxa" style="IBUITableViewCellStyleDefault" id="H4Z-K7-pdT">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="H4Z-K7-pdT" id="GkT-mC-TZ2">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Option 2" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XB2-5f-Zxa">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="0Az-R4-eOE" style="IBUITableViewCellStyleDefault" id="mBk-if-qoQ">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mBk-if-qoQ" id="gn6-nT-gXU">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Option 3" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Az-R4-eOE">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="CXa-uG-wMC">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="YxE-Yu-ufo" style="IBUITableViewCellStyleDefault" id="svZ-d6-bMa">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="svZ-d6-bMa" id="Eck-dC-NMT">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Start Quiz" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YxE-Yu-ufo">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Gag-Rn-BFw" kind="presentation" id="q7o-OK-4QO"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="apu-NP-Qh8" id="YzA-YY-hTG"/>
+                            <outlet property="delegate" destination="apu-NP-Qh8" id="tFa-Re-RLq"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Quiz" image="QuizTabBarIcon" id="Do8-qf-SEw">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="image" keyPath="selectedImage" value="QuizTabBarIconSelected"/>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="quizTabBarItem" destination="Do8-qf-SEw" id="hSg-ek-UxT"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mKP-kg-zrj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384" y="999"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="QuizTabBarIcon" width="25" height="25"/>
+        <image name="QuizTabBarIconSelected" width="25" height="25"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="gXR-bY-AxO"/>
+    </inferredMetricsTieBreakers>
 </document>

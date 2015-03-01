@@ -19,10 +19,12 @@
 		CA41FCE41A9C383200D9EF9A /* FaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCD91A9C383200D9EF9A /* FaceViewController.swift */; };
 		CA41FCE51A9C383200D9EF9A /* FactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCDA1A9C383200D9EF9A /* FactCell.swift */; };
 		CA41FCE61A9C383200D9EF9A /* FactTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCDB1A9C383200D9EF9A /* FactTextView.swift */; };
-		CA41FCE71A9C383200D9EF9A /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCDC1A9C383200D9EF9A /* HomeViewController.swift */; };
 		CA41FCE81A9C383200D9EF9A /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */; };
 		CA41FCEE1A9C39C800D9EF9A /* Faces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA41FCEA1A9C39C800D9EF9A /* Faces.storyboard */; };
 		CA41FCEF1A9C39C800D9EF9A /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA41FCEC1A9C39C800D9EF9A /* Quiz.storyboard */; };
+		DF2A0A961AA3ADDE00CC32E0 /* FacesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A951AA3ADDE00CC32E0 /* FacesNavigationController.swift */; };
+		DF2A0A981AA3AE8D00CC32E0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */; };
+		DF2A0A9A1AA3B1F100CC32E0 /* QuizOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A991AA3B1F100CC32E0 /* QuizOptionsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,10 +54,12 @@
 		CA41FCD91A9C383200D9EF9A /* FaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FaceViewController.swift; sourceTree = "<group>"; };
 		CA41FCDA1A9C383200D9EF9A /* FactCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactCell.swift; sourceTree = "<group>"; };
 		CA41FCDB1A9C383200D9EF9A /* FactTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FactTextView.swift; sourceTree = "<group>"; };
-		CA41FCDC1A9C383200D9EF9A /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		CA41FCEB1A9C39C800D9EF9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Faces.storyboard; sourceTree = "<group>"; };
 		CA41FCED1A9C39C800D9EF9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Quiz.storyboard; sourceTree = "<group>"; };
+		DF2A0A951AA3ADDE00CC32E0 /* FacesNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacesNavigationController.swift; sourceTree = "<group>"; };
+		DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		DF2A0A991AA3B1F100CC32E0 /* QuizOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOptionsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +108,7 @@
 				CA41FCD41A9C383200D9EF9A /* AppDelegate.swift */,
 				CA41FCBB1A9C372900D9EF9A /* LaunchScreen.xib */,
 				CA41FCB61A9C372900D9EF9A /* Main.storyboard */,
-				CA41FCDC1A9C383200D9EF9A /* HomeViewController.swift */,
+				DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */,
 				CA41FCB01A9C372900D9EF9A /* Supporting Files */,
 			);
 			path = "Face-Flash";
@@ -140,6 +144,7 @@
 			isa = PBXGroup;
 			children = (
 				CA41FCEA1A9C39C800D9EF9A /* Faces.storyboard */,
+				DF2A0A951AA3ADDE00CC32E0 /* FacesNavigationController.swift */,
 				CA41FCD81A9C383200D9EF9A /* FacesTableViewController.swift */,
 				CA41FCD91A9C383200D9EF9A /* FaceViewController.swift */,
 				CA41FCD71A9C383200D9EF9A /* FaceCell.swift */,
@@ -153,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				CA41FCEC1A9C39C800D9EF9A /* Quiz.storyboard */,
+				DF2A0A991AA3B1F100CC32E0 /* QuizOptionsViewController.swift */,
 				CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */,
 			);
 			name = Quiz;
@@ -278,13 +284,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DF2A0A961AA3ADDE00CC32E0 /* FacesNavigationController.swift in Sources */,
 				CA41FCE31A9C383200D9EF9A /* FacesTableViewController.swift in Sources */,
+				DF2A0A9A1AA3B1F100CC32E0 /* QuizOptionsViewController.swift in Sources */,
+				DF2A0A981AA3AE8D00CC32E0 /* MainTabBarController.swift in Sources */,
 				CA41FCE81A9C383200D9EF9A /* QuizViewController.swift in Sources */,
 				CA41FCE21A9C383200D9EF9A /* FaceCell.swift in Sources */,
 				CA41FCE01A9C383200D9EF9A /* DataEntry.swift in Sources */,
 				CA41FCE61A9C383200D9EF9A /* FactTextView.swift in Sources */,
 				CA41FCE41A9C383200D9EF9A /* FaceViewController.swift in Sources */,
-				CA41FCE71A9C383200D9EF9A /* HomeViewController.swift in Sources */,
 				CA41FCE11A9C383200D9EF9A /* Face.swift in Sources */,
 				CA41FCDF1A9C383200D9EF9A /* AppDelegate.swift in Sources */,
 				CA41FCE51A9C383200D9EF9A /* FactCell.swift in Sources */,
