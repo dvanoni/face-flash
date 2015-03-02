@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Faces-->
+        <!--FACE FLASH-->
         <scene sceneID="haR-LV-AfB">
             <objects>
                 <tableViewController id="fb5-CJ-vIN" customClass="FacesTableViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
@@ -41,7 +41,8 @@
                             <outlet property="delegate" destination="fb5-CJ-vIN" id="tWM-kw-U1l"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Faces" id="nnz-Js-dCy">
+                    <navigationItem key="navigationItem" title="FACE FLASH" id="nnz-Js-dCy">
+                        <barButtonItem key="backBarButtonItem" title="Faces" id="P9a-wL-qTc"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="gS1-um-qkn"/>
                     </navigationItem>
                 </tableViewController>
@@ -169,6 +170,9 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0i5-GQ-kgv">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="AvenirNext-DemiBoldItalic" family="Avenir Next" pointSize="18"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
