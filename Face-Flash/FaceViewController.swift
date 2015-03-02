@@ -132,7 +132,7 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
     // Configure the cell...
     switch Section(rawValue: indexPath.section)! {
     case .Face:
-      let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.cellIdentifier, forIndexPath: indexPath) as! FaceCell
+      let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.reuseIdentifier, forIndexPath: indexPath) as! FaceCell
       faceCell.updateFonts()
       faceCell.nameTextField.text = self.face.fullName
       faceCell.nameTextField.delegate = self
@@ -145,7 +145,7 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
       faceCell.imageEditButton.addTarget(self, action: "editFaceImage:", forControlEvents: .TouchUpInside)
       return faceCell
     case .Facts:
-      let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.cellIdentifier, forIndexPath: indexPath) as! FactCell
+      let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.reuseIdentifier, forIndexPath: indexPath) as! FactCell
       factCell.factTextView.delegate = self
       if indexPath.row < self.face.factArray.count {
         setupFactTextView(factCell.factTextView)

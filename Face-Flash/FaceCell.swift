@@ -10,7 +10,7 @@ import UIKit
 
 class FaceCell: UITableViewCell {
 
-  static let cellIdentifier = "FaceCell"
+  static let reuseIdentifier = "FaceCell"
 
   @IBOutlet weak var faceImageView: UIImageView!
   @IBOutlet weak var imageEditContainerView: UIVisualEffectView!

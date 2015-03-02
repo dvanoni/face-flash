@@ -10,7 +10,7 @@ import UIKit
 
 class FactCell: UITableViewCell {
 
-  static let cellIdentifier = "FactCell"
+  static let reuseIdentifier = "FactCell"
 
   @IBOutlet weak var factTextView: FactTextView!
 
