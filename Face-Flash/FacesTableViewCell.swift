@@ -13,13 +13,12 @@ class FacesTableViewCell: UITableViewCell {
   static let reuseIdentifier = "FaceCell"
 
   @IBOutlet weak var faceImageView: UIImageView!
-  @IBOutlet weak var faceImageViewHeightConstraint: NSLayoutConstraint!
   @IBOutlet weak var nameLabel: UILabel!
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    faceImageView.layer.cornerRadius = self.faceImageViewHeightConstraint.constant * 0.5
+    faceImageView.layer.cornerRadius = faceImageView.frame.height * 0.5
     updateColors()
   }
 

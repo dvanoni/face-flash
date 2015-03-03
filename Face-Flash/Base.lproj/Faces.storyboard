@@ -46,7 +46,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="faceImageView" destination="V0A-Of-LRZ" id="vFj-Di-HpP"/>
-                                    <outlet property="faceImageViewHeightConstraint" destination="3cl-4Y-MIc" id="I4R-Ku-k0o"/>
                                     <outlet property="nameLabel" destination="ajG-hP-tH5" id="F30-c6-37V"/>
                                     <segue destination="lTO-Rh-Qkl" kind="show" identifier="ShowFace" id="ifw-kc-EYQ"/>
                                 </connections>
