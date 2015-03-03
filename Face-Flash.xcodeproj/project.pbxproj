@@ -22,6 +22,7 @@
 		CA41FCE81A9C383200D9EF9A /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */; };
 		CA41FCEE1A9C39C800D9EF9A /* Faces.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA41FCEA1A9C39C800D9EF9A /* Faces.storyboard */; };
 		CA41FCEF1A9C39C800D9EF9A /* Quiz.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA41FCEC1A9C39C800D9EF9A /* Quiz.storyboard */; };
+		CACFD94D1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CACFD94B1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld */; };
 		DF2A0A961AA3ADDE00CC32E0 /* FacesNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A951AA3ADDE00CC32E0 /* FacesNavigationController.swift */; };
 		DF2A0A981AA3AE8D00CC32E0 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */; };
 		DF2A0A9A1AA3B1F100CC32E0 /* QuizOptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF2A0A991AA3B1F100CC32E0 /* QuizOptionsViewController.swift */; };
@@ -57,6 +58,7 @@
 		CA41FCDD1A9C383200D9EF9A /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
 		CA41FCEB1A9C39C800D9EF9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Faces.storyboard; sourceTree = "<group>"; };
 		CA41FCED1A9C39C800D9EF9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Quiz.storyboard; sourceTree = "<group>"; };
+		CACFD94C1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FaceFlashCoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		DF2A0A951AA3ADDE00CC32E0 /* FacesNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacesNavigationController.swift; sourceTree = "<group>"; };
 		DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		DF2A0A991AA3B1F100CC32E0 /* QuizOptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizOptionsViewController.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			children = (
 				CA41FCD51A9C383200D9EF9A /* DataEntry.swift */,
 				CA41FCD61A9C383200D9EF9A /* Face.swift */,
+				CACFD94B1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				CA41FCE81A9C383200D9EF9A /* QuizViewController.swift in Sources */,
 				CA41FCE21A9C383200D9EF9A /* FaceCell.swift in Sources */,
 				CA41FCE01A9C383200D9EF9A /* DataEntry.swift in Sources */,
+				CACFD94D1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld in Sources */,
 				CA41FCE61A9C383200D9EF9A /* FactTextView.swift in Sources */,
 				CA41FCE41A9C383200D9EF9A /* FaceViewController.swift in Sources */,
 				CA41FCE11A9C383200D9EF9A /* Face.swift in Sources */,
@@ -523,6 +527,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		CACFD94B1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				CACFD94C1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodel */,
+			);
+			currentVersion = CACFD94C1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodel */;
+			path = FaceFlashCoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CA41FCA51A9C372900D9EF9A /* Project object */;
 }
