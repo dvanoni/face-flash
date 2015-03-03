@@ -83,6 +83,9 @@
                                                         <state key="normal" title="Edit">
                                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="editFaceImage:" destination="lTO-Rh-Qkl" eventType="touchUpInside" id="rPb-bj-FWA"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -99,6 +102,9 @@
                                             <rect key="frame" x="136" y="16" width="456" height="20"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="lTO-Rh-Qkl" id="c0g-KD-Cny"/>
+                                            </connections>
                                         </textField>
                                     </subviews>
                                     <constraints>
@@ -130,6 +136,9 @@
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                            <connections>
+                                                <outlet property="delegate" destination="lTO-Rh-Qkl" id="252-DQ-Y0U"/>
+                                            </connections>
                                         </textView>
                                     </subviews>
                                     <constraints>
@@ -151,8 +160,16 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="8iy-jK-RhL"/>
+                    <connections>
+                        <outlet property="textEditDoneButton" destination="7cP-90-hHn" id="d5a-Kj-5yo"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jkk-4d-OwP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <barButtonItem systemItem="done" id="7cP-90-hHn">
+                    <connections>
+                        <action selector="textEditDone:" destination="lTO-Rh-Qkl" id="OnJ-g4-PEx"/>
+                    </connections>
+                </barButtonItem>
             </objects>
             <point key="canvasLocation" x="3668" y="350"/>
         </scene>
