@@ -269,7 +269,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="FaceCellIcon" width="44" height="44"/>
+        <image name="FaceCellIcon" width="60" height="60"/>
         <image name="FaceTabBarIcon" width="25" height="25"/>
         <image name="FaceTabBarIconSelected" width="25" height="25"/>
         <image name="FaceViewIcon" width="120" height="120"/>
