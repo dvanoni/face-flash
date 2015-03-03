@@ -27,6 +27,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
 
     self.navigationItem.rightBarButtonItem = self.editButtonItem()
 
+    // Enable automatic row sizing
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 44.0
 
@@ -61,7 +62,21 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   // MARK: - Actions
 
   @IBAction func editFaceImage(sender: AnyObject) {
-    self.startImagePicker()
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+
+    let takePhotoAction = UIAlertAction(title: "Take Photo", style: .Default) { (action) -> Void in
+      self.startImagePickerForSourceType(.Camera)
+    }
+    let choosePhotoAction = UIAlertAction(title: "Choose Photo", style: .Default) { (action) -> Void in
+      self.startImagePickerForSourceType(.PhotoLibrary)
+    }
+    let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+
+    alert.addAction(takePhotoAction)
+    alert.addAction(choosePhotoAction)
+    alert.addAction(cancelAction)
+
+    self.presentViewController(alert, animated: true, completion: nil)
   }
 
   @IBAction func textEditDone(sender: AnyObject) {
@@ -93,13 +108,13 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     return nil
   }
 
-  private func startImagePicker() -> Bool {
-    if !UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary) {
+  private func startImagePickerForSourceType(sourceType: UIImagePickerControllerSourceType) -> Bool {
+    if !UIImagePickerController.isSourceTypeAvailable(sourceType) {
       return false
     }
 
     let imagePicker = UIImagePickerController()
-    imagePicker.sourceType = .PhotoLibrary
+    imagePicker.sourceType = sourceType
     // By default imagePicker.mediaTypes = [kUTTypeImage], which is what we want
     imagePicker.allowsEditing = true
     imagePicker.delegate = self
