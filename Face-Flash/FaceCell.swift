@@ -16,10 +16,16 @@ class FaceCell: UITableViewCell {
   @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
   @IBOutlet weak var imageEditButton: UIButton!
   @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var tagsCollectionView: UICollectionView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
+    if let flowLayout = self.tagsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+      // Set estimated size to enable automatic cell sizing
+      flowLayout.estimatedItemSize = CGSize(width: 40.0, height: 20.0)
+    }
+    
     updateFonts()
   }
 
@@ -34,4 +40,5 @@ class FaceCell: UITableViewCell {
   func updateFonts() {
     nameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
   }
+
 }

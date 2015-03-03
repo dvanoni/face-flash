@@ -106,17 +106,66 @@
                                                 <outlet property="delegate" destination="lTO-Rh-Qkl" id="c0g-KD-Cny"/>
                                             </connections>
                                         </textField>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="r31-KT-QOR">
+                                            <rect key="frame" x="136" y="44" width="456" height="84"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="lch-mO-Ypp">
+                                                <size key="itemSize" width="40" height="20"/>
+                                                <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                            </collectionViewFlowLayout>
+                                            <cells>
+                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="OCL-su-KZL" customClass="TagCell" customModule="Face_Flash" customModuleProvider="target">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                        <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                                        <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyc-7r-zbk">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    </view>
+                                                    <constraints>
+                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="leading" secondItem="OCL-su-KZL" secondAttribute="leading" id="Chv-rS-6wG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pyc-7r-zbk" secondAttribute="trailing" id="emm-hZ-1be"/>
+                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="top" secondItem="OCL-su-KZL" secondAttribute="top" id="p9w-Hb-FBd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pyc-7r-zbk" secondAttribute="bottom" id="zsn-RG-RTY"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <outlet property="bottomConstraint" destination="zsn-RG-RTY" id="7yT-8v-R9O"/>
+                                                        <outlet property="leadingConstraint" destination="Chv-rS-6wG" id="MoE-Wt-0wi"/>
+                                                        <outlet property="tagLabel" destination="pyc-7r-zbk" id="IgE-OK-Mvb"/>
+                                                        <outlet property="topConstraint" destination="p9w-Hb-FBd" id="aWM-XR-DcZ"/>
+                                                        <outlet property="trailingConstraint" destination="emm-hZ-1be" id="saK-Ef-C3u"/>
+                                                    </connections>
+                                                </collectionViewCell>
+                                            </cells>
+                                            <connections>
+                                                <outlet property="dataSource" destination="lTO-Rh-Qkl" id="fOW-7a-14e"/>
+                                            </connections>
+                                        </collectionView>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="7B6-36-E3w" firstAttribute="centerX" secondItem="3BE-yr-YNW" secondAttribute="centerX" id="1uR-aM-MAh"/>
                                         <constraint firstItem="3BE-yr-YNW" firstAttribute="leading" secondItem="RkA-y3-bS3" secondAttribute="leadingMargin" id="BRC-Es-0Fj"/>
                                         <constraint firstItem="7B6-36-E3w" firstAttribute="bottom" secondItem="3BE-yr-YNW" secondAttribute="bottom" id="JI7-f6-zay"/>
+                                        <constraint firstItem="r31-KT-QOR" firstAttribute="top" secondItem="eXR-59-M6J" secondAttribute="bottom" constant="8" symbolic="YES" id="M5p-SZ-u99"/>
                                         <constraint firstItem="eXR-59-M6J" firstAttribute="top" secondItem="3BE-yr-YNW" secondAttribute="top" constant="8" id="ZrF-9d-Fpx"/>
                                         <constraint firstItem="eXR-59-M6J" firstAttribute="leading" secondItem="3BE-yr-YNW" secondAttribute="trailing" constant="8" symbolic="YES" id="aOK-HF-p2r"/>
                                         <constraint firstItem="7B6-36-E3w" firstAttribute="width" secondItem="3BE-yr-YNW" secondAttribute="width" id="aSU-0l-gjW"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="eXR-59-M6J" secondAttribute="trailing" id="aW2-Pl-YWt"/>
+                                        <constraint firstItem="eXR-59-M6J" firstAttribute="trailing" secondItem="r31-KT-QOR" secondAttribute="trailing" id="eGu-K2-O50"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="r31-KT-QOR" secondAttribute="bottom" id="ifW-OF-H8P"/>
                                         <constraint firstItem="3BE-yr-YNW" firstAttribute="top" secondItem="RkA-y3-bS3" secondAttribute="topMargin" id="kGP-TD-Chf"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="3BE-yr-YNW" secondAttribute="bottom" id="w3u-It-Imk"/>
+                                        <constraint firstItem="eXR-59-M6J" firstAttribute="leading" secondItem="r31-KT-QOR" secondAttribute="leading" id="tmH-x5-pc9"/>
+                                        <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="3BE-yr-YNW" secondAttribute="bottom" id="w3u-It-Imk"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -124,6 +173,7 @@
                                     <outlet property="imageEditButton" destination="24D-5U-2AO" id="nb2-k5-e8t"/>
                                     <outlet property="imageEditContainerView" destination="7B6-36-E3w" id="m6b-ql-Eb2"/>
                                     <outlet property="nameTextField" destination="eXR-59-M6J" id="mFK-Yc-44Z"/>
+                                    <outlet property="tagsCollectionView" destination="r31-KT-QOR" id="gfT-7C-sob"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="FactCell" id="DSS-Tm-gO9" customClass="FactCell" customModule="Face_Flash" customModuleProvider="target">

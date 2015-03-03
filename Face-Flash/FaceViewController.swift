@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FaceViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FaceViewController: UITableViewController, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
   var face: Face!
 
@@ -233,6 +233,18 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
     }
     // Allow the proposed destination
     return proposedDestinationIndexPath
+  }
+
+  // MARK: - Collection view data source
+
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    return self.face.tagArray.count
+  }
+
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let tagCell = collectionView.dequeueReusableCellWithReuseIdentifier(TagCell.reuseIdentifier, forIndexPath: indexPath) as! TagCell
+    tagCell.tagLabel.text = self.face.tagArray[indexPath.item]
+    return tagCell
   }
 
   // MARK: - Text field delegate

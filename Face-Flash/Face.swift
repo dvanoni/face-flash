@@ -61,6 +61,9 @@ class Face {
 
   var imageQ: UIImage?
 
+  // TODO: Do not hardcode this
+  var tagArray = ["Friends", "Arizona"]
+
   var factArray: Array<String> = []
 
   private init(imageQ: UIImage?) {
