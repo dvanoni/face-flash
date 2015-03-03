@@ -10,28 +10,44 @@
         <scene sceneID="haR-LV-AfB">
             <objects>
                 <tableViewController id="fb5-CJ-vIN" customClass="FacesTableViewController" customModule="Face_Flash" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="W2a-Pq-Tst">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="77" sectionHeaderHeight="22" sectionFooterHeight="22" id="W2a-Pq-Tst">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" restorationIdentifier="FaceCell" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FaceCell" textLabel="apu-fX-L53" imageView="KEE-0w-ocs" style="IBUITableViewCellStyleDefault" id="oVN-4i-7i7">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="FaceCell" id="oVN-4i-7i7" customClass="FacesTableViewCell" customModule="Face_Flash" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oVN-4i-7i7" id="TMv-YZ-cWg">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="apu-fX-L53">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="FaceCellIcon" translatesAutoresizingMaskIntoConstraints="NO" id="V0A-Of-LRZ">
+                                            <rect key="frame" x="8" y="8" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="3cl-4Y-MIc"/>
+                                                <constraint firstAttribute="width" secondItem="V0A-Of-LRZ" secondAttribute="height" multiplier="1:1" id="JbN-hU-kf1"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ajG-hP-tH5">
+                                            <rect key="frame" x="76" y="8" width="44" height="60"/>
+                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" image="FaceCellIcon" id="KEE-0w-ocs">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </imageView>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="ajG-hP-tH5" firstAttribute="centerY" secondItem="V0A-Of-LRZ" secondAttribute="centerY" id="6eo-Fq-5At"/>
+                                        <constraint firstItem="ajG-hP-tH5" firstAttribute="leading" secondItem="V0A-Of-LRZ" secondAttribute="trailing" constant="8" symbolic="YES" id="7Uz-6x-Nqt"/>
+                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ajG-hP-tH5" secondAttribute="trailing" priority="900" id="TYb-Iz-EzW"/>
+                                        <constraint firstItem="V0A-Of-LRZ" firstAttribute="top" secondItem="TMv-YZ-cWg" secondAttribute="topMargin" id="hHx-wu-YTl"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="V0A-Of-LRZ" secondAttribute="bottom" id="mGR-GI-Shj"/>
+                                        <constraint firstItem="ajG-hP-tH5" firstAttribute="height" secondItem="V0A-Of-LRZ" secondAttribute="height" id="sXR-MY-69V"/>
+                                        <constraint firstItem="V0A-Of-LRZ" firstAttribute="leading" secondItem="TMv-YZ-cWg" secondAttribute="leadingMargin" id="scB-SX-z5O"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="faceImageView" destination="V0A-Of-LRZ" id="vFj-Di-HpP"/>
+                                    <outlet property="faceImageViewHeightConstraint" destination="3cl-4Y-MIc" id="I4R-Ku-k0o"/>
+                                    <outlet property="nameLabel" destination="ajG-hP-tH5" id="F30-c6-37V"/>
                                     <segue destination="lTO-Rh-Qkl" kind="show" identifier="ShowFace" id="ifw-kc-EYQ"/>
                                 </connections>
                             </tableViewCell>
