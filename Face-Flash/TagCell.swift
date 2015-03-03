@@ -24,21 +24,25 @@ class TagCell: UICollectionViewCell {
 
     self.layer.cornerRadius = self.tagLabel.font.lineHeight * 0.75
     self.clipsToBounds = true
-    self.backgroundColor = self.tintColor
-    self.tagLabel.textColor = UIColor.whiteColor()
+    updateColors()
   }
 
   override func tintColorDidChange() {
-    self.backgroundColor = self.tintColor
+    updateColors()
   }
 
   override func updateConstraints() {
-    self.leadingConstraint.constant = self.layer.cornerRadius
-    self.trailingConstraint.constant = self.layer.cornerRadius
-    self.topConstraint.constant = tagLabel.font.lineHeight * 0.3
-    self.bottomConstraint.constant = tagLabel.font.lineHeight * 0.3
+    leadingConstraint.constant = self.layer.cornerRadius
+    trailingConstraint.constant = self.layer.cornerRadius
+    topConstraint.constant = tagLabel.font.lineHeight * 0.3
+    bottomConstraint.constant = tagLabel.font.lineHeight * 0.3
 
     super.updateConstraints()
+  }
+
+  func updateColors() {
+    self.backgroundColor = self.tintColor
+    tagLabel.textColor = UIColor.whiteColor()
   }
 
 }

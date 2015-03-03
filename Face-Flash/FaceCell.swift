@@ -25,7 +25,8 @@ class FaceCell: UITableViewCell {
       // Set estimated size to enable automatic cell sizing
       flowLayout.estimatedItemSize = CGSize(width: 40.0, height: 20.0)
     }
-    
+
+    updateColors()
     updateFonts()
   }
 
@@ -37,8 +38,16 @@ class FaceCell: UITableViewCell {
     nameTextField.borderStyle = editing ? .RoundedRect : .None
   }
 
+  override func tintColorDidChange() {
+    updateColors()
+  }
+
   func updateFonts() {
     nameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+  }
+
+  func updateColors() {
+    faceImageView.tintColor = self.tintColor
   }
 
 }

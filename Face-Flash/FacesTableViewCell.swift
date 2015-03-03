@@ -19,7 +19,16 @@ class FacesTableViewCell: UITableViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    self.faceImageView.layer.cornerRadius = self.faceImageViewHeightConstraint.constant * 0.5
+    faceImageView.layer.cornerRadius = self.faceImageViewHeightConstraint.constant * 0.5
+    updateColors()
+  }
+
+  override func tintColorDidChange() {
+    updateColors()
+  }
+
+  func updateColors() {
+    faceImageView.tintColor = self.tintColor
   }
 
 }

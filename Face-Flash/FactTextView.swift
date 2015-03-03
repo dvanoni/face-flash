@@ -19,17 +19,23 @@ class FactTextView: UITextView {
       switch self.style {
       case .Default:
         self.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
-        self.textColor = UIColor.darkTextColor()
       case .Add:
         self.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-        self.textColor = self.tintColor
       }
+      updateColors()
     }
   }
 
   override func tintColorDidChange() {
+    updateColors()
+  }
+
+  func updateColors() {
     if self.style == .Add {
       self.textColor = self.tintColor
+    }
+    else {
+      self.textColor = UIColor.darkTextColor()
     }
   }
 
