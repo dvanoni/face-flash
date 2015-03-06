@@ -11,6 +11,7 @@ import UIKit
 class QuizViewController: UIViewController {
 
   @IBOutlet weak var facesCountLabel: UILabel!
+  @IBOutlet weak var progressView: UIProgressView!
 
   @IBOutlet weak var cardView: UIView!
   @IBOutlet weak var cardFrontView: UIView!
@@ -22,10 +23,8 @@ class QuizViewController: UIViewController {
 
   @IBOutlet weak var buttonsView: UIView!
 
-  @IBOutlet var lineHeightConstraintCollection: [NSLayoutConstraint]!
   private let facesToShow = FaceArray.getArray().getShuffledArray()
   private var answers = [Bool]()
-
 
   private var progress: Float {
     return Float(answers.count) / Float(facesToShow.count)
@@ -39,10 +38,6 @@ class QuizViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    lineHeightConstraintCollection.map { constraint in
-      constraint.constant = 1.0 / UIScreen.mainScreen().scale
-    }
 
     cardFrontView.layer.cornerRadius = cardView.layer.cornerRadius
     cardBackView.layer.cornerRadius = cardView.layer.cornerRadius
@@ -97,6 +92,7 @@ class QuizViewController: UIViewController {
   // MARK: - Helper methods
 
   private func advanceQuiz() {
+    progressView.setProgress(progress, animated: true)
     facesCountLabel.text = "Faces Viewed: \(answers.count)/\(facesToShow.count)"
 
     if answers.count == facesToShow.count {
