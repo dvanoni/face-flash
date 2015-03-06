@@ -10,7 +10,7 @@ import UIKit
 
 class FaceViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-  var face: Face!
+  var face: FaceBase!
 
   private var activeTextView: UITextView?
   private var activeTextViewPrevHeight: CGFloat?
@@ -136,7 +136,7 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
       faceCell.updateFonts()
       faceCell.nameTextField.text = self.face.fullName
       faceCell.nameTextField.delegate = self
-      if let image = self.face.imageQ {
+      if let image = self.face.image {
         faceCell.faceImageView.image = image
       }
       else {
@@ -330,7 +330,7 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     // Set edited image as new face image
     let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
-    self.face.imageQ = editedImage
+    self.face.image = editedImage
 
     // Reload face cell
     let faceCellIndexPath = NSIndexPath(forRow: 0, inSection: Section.Face.rawValue)

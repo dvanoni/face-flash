@@ -10,7 +10,7 @@ import UIKit
 
 class FacesTableViewController: UITableViewController {
 
-  private let faceArray = FaceArray.getArray()
+  private let faceArray = FaceArray.sharedInstance
 
   private var selectedIndexPath: NSIndexPath?
 
@@ -55,7 +55,7 @@ class FacesTableViewController: UITableViewController {
 
     // Configure the cell...
     cell.textLabel?.text = faceArray[indexPath.row].fullName
-    if let image = faceArray[indexPath.row].imageQ {
+    if let image = faceArray[indexPath.row].image {
       cell.imageView?.image = image
     }
 

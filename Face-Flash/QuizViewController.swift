@@ -34,7 +34,7 @@ class QuizFactViewController: UIViewController {
   @IBOutlet var nameLabel: UILabel!
   @IBOutlet var factTextView: UITextView!
 
-  let fArray = FaceArray.getArray()
+  let fArray = FaceArray.sharedInstance
 
   override func viewDidLoad()
   {
@@ -85,7 +85,7 @@ class QuizImageViewController: UIViewController
 
   @IBOutlet var imageView: UIImageView!
 
-  let fArray = FaceArray.getArray()
+  let fArray = FaceArray.sharedInstance
 
   override func viewDidLoad()
   {
@@ -102,7 +102,7 @@ class QuizImageViewController: UIViewController
     {
 
       let face = fArray[index]
-      if let image = face.imageQ
+      if let image = face.image
       {
         imageView.image = image
       }
