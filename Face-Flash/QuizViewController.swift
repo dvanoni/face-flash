@@ -23,7 +23,7 @@ class QuizViewController: UIViewController {
 
   @IBOutlet weak var buttonsView: UIView!
 
-  private let facesToShow = FaceArray.getArray().getShuffledArray()
+  private let facesToShow = QuizViewController.getShuffledFaceArray()
   private var answers = [Bool]()
 
   private var progress: Float {
@@ -91,6 +91,19 @@ class QuizViewController: UIViewController {
 
   // MARK: - Helper methods
 
+  private class func getShuffledFaceArray() -> [FaceBase] {
+    var shuffledArray = [FaceBase]()
+    var remainingIndices = [Int](0..<FaceArray.sharedInstance.count)
+
+    for _ in 0..<FaceArray.sharedInstance.count {
+      let i = Int(arc4random_uniform(UInt32(remainingIndices.count)))
+      let randomIndex = remainingIndices.removeAtIndex(i)
+      shuffledArray.append(FaceArray.sharedInstance[randomIndex])
+    }
+
+    return shuffledArray
+  }
+
   private func advanceQuiz() {
     progressView.setProgress(progress, animated: true)
     facesCountLabel.text = "Faces Viewed: \(answers.count)/\(facesToShow.count)"
@@ -104,10 +117,10 @@ class QuizViewController: UIViewController {
     }
   }
 
-  private func showCardFrontWithFace(face: Face) {
+  private func showCardFrontWithFace(face: FaceBase) {
     UIView.transitionWithView(cardView, duration: 0.5, options: .TransitionCurlUp,
       animations: {
-        if let image = face.imageQ {
+        if let image = face.image {
           self.faceImageView.image = image
         }
         else {

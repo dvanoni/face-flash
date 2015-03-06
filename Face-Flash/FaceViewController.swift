@@ -10,7 +10,10 @@ import UIKit
 
 class FaceViewController: UITableViewController, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-  var face: Face!
+  var face: FaceBase!
+
+  // TODO: Use proper collection of tags
+  private let fakeTags = ["Friends", "Arizona"]
 
   private var activeTextView: UITextView?
   private var activeTextViewPrevHeight: CGFloat?
@@ -148,7 +151,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
       let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.reuseIdentifier, forIndexPath: indexPath) as! FaceCell
       faceCell.updateFonts()
       faceCell.nameTextField.text = self.face.fullName
-      if let image = self.face.imageQ {
+      if let image = self.face.image {
         faceCell.faceImageView.image = image
       }
       else {
@@ -253,12 +256,12 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   // MARK: - Collection view data source
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return self.face.tagArray.count
+    return self.fakeTags.count
   }
 
   func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
     let tagCell = collectionView.dequeueReusableCellWithReuseIdentifier(TagCell.reuseIdentifier, forIndexPath: indexPath) as! TagCell
-    tagCell.tagLabel.text = self.face.tagArray[indexPath.item]
+    tagCell.tagLabel.text = self.fakeTags[indexPath.item]
     return tagCell
   }
 
@@ -352,7 +355,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
     // Set edited image as new face image
     let editedImage = info[UIImagePickerControllerEditedImage] as? UIImage
-    self.face.imageQ = editedImage
+    self.face.image = editedImage
 
     // Reload face cell
     let faceCellIndexPath = NSIndexPath(forRow: 0, inSection: Section.Face.rawValue)

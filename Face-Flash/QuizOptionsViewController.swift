@@ -10,7 +10,8 @@ import UIKit
 
 class QuizOptionsViewController: UITableViewController {
 
-  private let faceArray = FaceArray.getArray()
+  // TODO: Use proper collection of tags
+  private let fakeTags = ["Friends", "Arizona"]
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,7 +38,7 @@ class QuizOptionsViewController: UITableViewController {
     switch section {
     case 0:
       // TODO: Use proper collection of tags
-      return faceArray[0].tagArray.count
+      return fakeTags.count
     case 1:
       return 1
     default:
@@ -50,7 +51,7 @@ class QuizOptionsViewController: UITableViewController {
     case 0:
       let tagCell = tableView.dequeueReusableCellWithIdentifier("TagCell", forIndexPath: indexPath) as! UITableViewCell
       // TODO: Use proper collection of tags
-      tagCell.textLabel?.text = faceArray[0].tagArray[indexPath.row]
+      tagCell.textLabel?.text = fakeTags[indexPath.row]
       return tagCell
     case 1:
       return tableView.dequeueReusableCellWithIdentifier("StartQuizCell", forIndexPath: indexPath) as! UITableViewCell
