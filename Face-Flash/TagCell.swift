@@ -14,35 +14,26 @@ class TagCell: UICollectionViewCell {
 
   @IBOutlet weak var tagLabel: UILabel!
 
-  @IBOutlet weak var leadingConstraint: NSLayoutConstraint!
-  @IBOutlet weak var trailingConstraint: NSLayoutConstraint!
-  @IBOutlet weak var topConstraint: NSLayoutConstraint!
-  @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-
   override func awakeFromNib() {
     super.awakeFromNib()
 
-    self.layer.cornerRadius = self.tagLabel.font.lineHeight * 0.75
-    self.clipsToBounds = true
+    self.layer.borderWidth = 1.0
+
     updateColors()
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    self.layer.cornerRadius = self.frame.height * 0.5
   }
 
   override func tintColorDidChange() {
     updateColors()
   }
 
-  override func updateConstraints() {
-    leadingConstraint.constant = self.layer.cornerRadius
-    trailingConstraint.constant = self.layer.cornerRadius
-    topConstraint.constant = tagLabel.font.lineHeight * 0.3
-    bottomConstraint.constant = tagLabel.font.lineHeight * 0.3
-
-    super.updateConstraints()
-  }
-
   func updateColors() {
-    self.backgroundColor = self.tintColor
-    tagLabel.textColor = UIColor.whiteColor()
+    self.backgroundColor = self.tintColor.colorWithAlphaComponent(0.1)
+    self.layer.borderColor = self.tintColor.colorWithAlphaComponent(0.5).CGColor
   }
 
 }
