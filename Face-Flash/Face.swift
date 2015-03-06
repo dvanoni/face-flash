@@ -33,6 +33,15 @@ class FaceArray {
     array.append(face)
     return true
   }
+
+  func getShuffledArray() -> [Face] {
+    var shuffledArray = array
+    for i in 0..<(shuffledArray.count - 1) {
+      let j = Int(arc4random_uniform(UInt32(shuffledArray.count - i))) + i
+      swap(&shuffledArray[i], &shuffledArray[j])
+    }
+    return shuffledArray
+  }
 }
 
 
