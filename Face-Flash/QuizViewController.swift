@@ -23,16 +23,18 @@ class QuizViewController: UIViewController {
   @IBOutlet weak var buttonsView: UIView!
 
   @IBOutlet var lineHeightConstraintCollection: [NSLayoutConstraint]!
+  private let facesToShow = FaceArray.getArray().getShuffledArray()
+  private var answers = [Bool]()
 
-  private let faceArray = FaceArray.getArray()
-  private var facesToShow = FaceArray.getArray().getShuffledArray()
-  private var answers = [Bool](count: FaceArray.getArray().count, repeatedValue: false)
 
-  private var facesViewed: Int {
-    return faceArray.count - facesToShow.count
+  private var progress: Float {
+    return Float(answers.count) / Float(facesToShow.count)
   }
-  private var currentIndex: Int {
-    return facesViewed - 1
+  private var countCorrect: Int {
+    return answers.reduce(0) { sum, correct in sum + (correct ? 1 : 0) }
+  }
+  private var countIncorrect: Int {
+    return answers.count - countCorrect
   }
 
   override func viewDidLoad() {
@@ -45,7 +47,7 @@ class QuizViewController: UIViewController {
     cardFrontView.layer.cornerRadius = cardView.layer.cornerRadius
     cardBackView.layer.cornerRadius = cardView.layer.cornerRadius
 
-    showNextFace()
+    advanceQuiz()
   }
 
   override func didReceiveMemoryWarning() {
@@ -65,23 +67,16 @@ class QuizViewController: UIViewController {
       animationOptions = .TransitionFlipFromLeft
     }
 
-    UIView.transitionWithView(cardView, duration: 0.5, options: animationOptions,
-      animations: {
-        self.cardFrontView.hidden = true
-        self.cardBackView.hidden = false
-      },
-      completion: { finished in
-        self.buttonsView.hidden = false
-    })
+    showCardBackWithAnimationOptions(animationOptions)
   }
 
   @IBAction func markCorrect(sender: AnyObject) {
-    answers[currentIndex] = true
+    answers.append(true)
     advanceQuiz()
   }
 
   @IBAction func markIncorrect(sender: AnyObject) {
-    answers[currentIndex] = false
+    answers.append(false)
     advanceQuiz()
   }
 
@@ -102,20 +97,20 @@ class QuizViewController: UIViewController {
   // MARK: - Helper methods
 
   private func advanceQuiz() {
-    if !showNextFace() {
+    facesCountLabel.text = "Faces Viewed: \(answers.count)/\(facesToShow.count)"
+
+    if answers.count == facesToShow.count {
       // Quiz is finished
       finishQuiz()
     }
+    else {
+      showCardFrontWithFace(facesToShow[answers.count])
+    }
   }
 
-  private func showNextFace() -> Bool {
-    if facesToShow.isEmpty {
-      return false
-    }
-
+  private func showCardFrontWithFace(face: Face) {
     UIView.transitionWithView(cardView, duration: 0.5, options: .TransitionCurlUp,
       animations: {
-        let face = self.facesToShow.removeLast()
         if let image = face.imageQ {
           self.faceImageView.image = image
         }
@@ -129,17 +124,22 @@ class QuizViewController: UIViewController {
         self.cardBackView.hidden = true
         self.buttonsView.hidden = true
       },
-      completion: { finished in
-        self.facesCountLabel.text = "Faces Viewed: \(self.facesViewed)/\(self.faceArray.count)"
-    })
+      completion: nil)
+  }
 
-    return true
+  private func showCardBackWithAnimationOptions(options: UIViewAnimationOptions) {
+    UIView.transitionWithView(cardView, duration: 0.5, options: options,
+      animations: {
+        self.cardFrontView.hidden = true
+        self.cardBackView.hidden = false
+      },
+      completion: { finished in
+        self.buttonsView.hidden = false
+    })
   }
 
   private func finishQuiz() {
-    let countCorrect = answers.reduce(0) { sum, correct in sum + (correct ? 1 : 0) }
-
-    let alert = UIAlertController(title: "Quiz Finished", message: "You got \(countCorrect)/\(facesViewed) correct", preferredStyle: .Alert)
+    let alert = UIAlertController(title: "Quiz Finished", message: "You got \(countCorrect)/\(answers.count) correct", preferredStyle: .Alert)
 
     let doneAction = UIAlertAction(title: "Done", style: .Default, handler: { (action) -> Void in
       self.dismissViewControllerAnimated(true, completion: nil)
