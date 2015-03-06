@@ -8,14 +8,14 @@
 
 import UIKit
 
-class FaceViewController: UITableViewController, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class FaceViewController: UITableViewController, UICollectionViewDataSource, UITextFieldDelegate, UITextViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
   var face: FaceBase!
 
   private var activeTextView: UITextView?
   private var activeTextViewPrevHeight: CGFloat?
 
-  private var textEditDoneButton: UIBarButtonItem!
+  @IBOutlet var textEditDoneButton: UIBarButtonItem!
 
   private enum Section: Int {
     case Face = 0, Facts
@@ -29,8 +29,6 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
 
     self.tableView.rowHeight = UITableViewAutomaticDimension
     self.tableView.estimatedRowHeight = 44.0
-
-    self.textEditDoneButton = UIBarButtonItem(barButtonSystemItem: .Done, target: self, action: "textEditDone:")
 
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
@@ -62,11 +60,11 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
 
   // MARK: - Actions
 
-  func editFaceImage(sender: AnyObject) {
+  @IBAction func editFaceImage(sender: AnyObject) {
     self.startImagePicker()
   }
 
-  func textEditDone(sender: AnyObject) {
+  @IBAction func textEditDone(sender: AnyObject) {
     if let textView = self.activeTextView {
       textView.resignFirstResponder()
     }
@@ -132,21 +130,18 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
     // Configure the cell...
     switch Section(rawValue: indexPath.section)! {
     case .Face:
-      let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.cellIdentifier, forIndexPath: indexPath) as! FaceCell
+      let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.reuseIdentifier, forIndexPath: indexPath) as! FaceCell
       faceCell.updateFonts()
       faceCell.nameTextField.text = self.face.fullName
-      faceCell.nameTextField.delegate = self
       if let image = self.face.image {
         faceCell.faceImageView.image = image
       }
       else {
         faceCell.imageEditButton.setTitle("Add Photo", forState: .Normal)
       }
-      faceCell.imageEditButton.addTarget(self, action: "editFaceImage:", forControlEvents: .TouchUpInside)
       return faceCell
     case .Facts:
-      let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.cellIdentifier, forIndexPath: indexPath) as! FactCell
-      factCell.factTextView.delegate = self
+      let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.reuseIdentifier, forIndexPath: indexPath) as! FactCell
       if indexPath.row < self.face.factArray.count {
         setupFactTextView(factCell.factTextView)
         factCell.factTextView.text = self.face.factArray[indexPath.row]
@@ -238,6 +233,19 @@ class FaceViewController: UITableViewController, UITextFieldDelegate, UITextView
     }
     // Allow the proposed destination
     return proposedDestinationIndexPath
+  }
+
+  // MARK: - Collection view data source
+
+  func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    //    return self.face.tagArray.count
+    return 0
+  }
+
+  func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    let tagCell = collectionView.dequeueReusableCellWithReuseIdentifier(TagCell.reuseIdentifier, forIndexPath: indexPath) as! TagCell
+    //    tagCell.tagLabel.text = self.face.tagArray[indexPath.item]
+    return tagCell
   }
 
   // MARK: - Text field delegate

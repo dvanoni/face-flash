@@ -17,6 +17,10 @@ class FacesTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    // Enable automatic row sizing
+    self.tableView.rowHeight = UITableViewAutomaticDimension
+    self.tableView.estimatedRowHeight = 77.0
+
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = false
 
@@ -51,12 +55,15 @@ class FacesTableViewController: UITableViewController {
 
 
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCellWithIdentifier("FaceCell", forIndexPath: indexPath) as! UITableViewCell
+    let cell = tableView.dequeueReusableCellWithIdentifier(FacesTableViewCell.reuseIdentifier, forIndexPath: indexPath) as! FacesTableViewCell
 
     // Configure the cell...
-    cell.textLabel?.text = faceArray[indexPath.row].fullName
+    cell.nameLabel.text = faceArray[indexPath.row].fullName
     if let image = faceArray[indexPath.row].image {
-      cell.imageView?.image = image
+      cell.faceImageView.image = image
+    }
+    else {
+      cell.faceImageView.image = UIImage(named: "FaceCellIcon")
     }
 
     return cell

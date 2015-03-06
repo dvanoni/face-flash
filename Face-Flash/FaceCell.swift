@@ -10,16 +10,26 @@ import UIKit
 
 class FaceCell: UITableViewCell {
 
-  static let cellIdentifier = "FaceCell"
+  static let reuseIdentifier = "FaceCell"
 
   @IBOutlet weak var faceImageView: UIImageView!
   @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
   @IBOutlet weak var imageEditButton: UIButton!
   @IBOutlet weak var nameTextField: UITextField!
+  @IBOutlet weak var tagsCollectionView: UICollectionView!
 
   override func awakeFromNib() {
     super.awakeFromNib()
 
+    faceImageView.layer.cornerRadius = faceImageView.frame.height * 0.5
+    faceImageView.addSubview(imageEditContainerView)
+
+    if let flowLayout = self.tagsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+      // Set estimated size to enable automatic cell sizing
+      flowLayout.estimatedItemSize = CGSize(width: 40.0, height: 20.0)
+    }
+
+    updateColors()
     updateFonts()
   }
 
@@ -31,7 +41,16 @@ class FaceCell: UITableViewCell {
     nameTextField.borderStyle = editing ? .RoundedRect : .None
   }
 
+  override func tintColorDidChange() {
+    updateColors()
+  }
+
   func updateFonts() {
     nameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
   }
+
+  func updateColors() {
+    faceImageView.tintColor = self.tintColor
+  }
+
 }
