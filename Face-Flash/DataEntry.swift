@@ -77,15 +77,25 @@ func addHardCodedFaces()
   face.prepareForStore()
 
   faceArray.addFace(face)
-
+  
   
   face = FF_Face( firstName: "John", middleNameQ: nil, lastName: "Yu", imageQ: UIImage(named: "jYu") )
-
+  
   face.addFact("iOS Developer")
   face.addFact("From Taiwan")
   face.addFact("ASU student")
   face.prepareForStore()
-
+  
+  faceArray.addFace(face)
+  
+  
+  face = FF_Face( firstName: "Isabel", middleNameQ: nil, lastName: "Sadowsky", imageQ: UIImage(named: "Isabel") )
+  
+  face.addFact("Rottweiller - German/American mix")
+  face.addFact("Likes to go for walks and hikes")
+  face.addFact("A lover of human beings - gives hugs")
+  face.prepareForStore()
+  
   faceArray.addFace(face)
   
 }
