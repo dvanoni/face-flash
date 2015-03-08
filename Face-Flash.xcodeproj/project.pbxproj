@@ -121,6 +121,7 @@
 				CA41FCBB1A9C372900D9EF9A /* LaunchScreen.xib */,
 				CA41FCB61A9C372900D9EF9A /* Main.storyboard */,
 				DF2A0A971AA3AE8D00CC32E0 /* MainTabBarController.swift */,
+				CA6F7AB11AAB6D3A00347E99 /* Utilities.swift */,
 				CA41FCB01A9C372900D9EF9A /* Supporting Files */,
 			);
 			path = "Face-Flash";
@@ -195,7 +196,6 @@
 				CA41FCD61A9C383200D9EF9A /* Face.swift */,
 				CACFD9581AA76C79006A2BDF /* CoreData.swift */,
 				CACFD94B1AA57AED006A2BDF /* FaceFlashCoreDataModel.xcdatamodeld */,
-				CA6F7AB11AAB6D3A00347E99 /* Utilities.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
