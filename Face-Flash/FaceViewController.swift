@@ -177,7 +177,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
     if editingStyle == .Delete {
       // Delete the row from the data source
-      self.face.factArray.removeAtIndex(indexPath.row)
+      self.face.removeFactAtIndex(indexPath.row)
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
     } else if editingStyle == .Insert {
       // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -186,7 +186,16 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
 
   // Override to support rearranging the table view.
   override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-    self.face.factArray.insert(self.face.factArray.removeAtIndex(fromIndexPath.row), atIndex: toIndexPath.row)
+    //    self.face.factArray.insert( self.face.factArray.removeAtIndex(fromIndexPath.row), atIndex: toIndexPath.row )
+    if let fact = self.face.removeFactAtIndex(fromIndexPath.row)
+    {
+      if self.face.insertFactAtIndex(toIndexPath.row, newFact: fact)
+      {
+        return
+      }
+    }
+    // Illegal indexing into face facts
+    abort()
   }
 
   // Override to support conditional rearranging of the table view.
@@ -316,7 +325,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     if let indexPath = self.indexPathForTextView(textView) {
       if indexPath.row < self.face.factArray.count {
         // An existing fact was edited
-        self.face.factArray[indexPath.row] = textView.text
+        self.face.changeFactAtIndex(indexPath.row, changedFact: textView.text)
       }
       else if !textView.text.isEmpty {
         // A new fact was added

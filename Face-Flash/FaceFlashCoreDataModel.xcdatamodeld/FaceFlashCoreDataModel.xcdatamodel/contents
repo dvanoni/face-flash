@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7527" systemVersion="14C109" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="FaceBase" representedClassName="Face_Flash.FaceBase" syncable="YES">
+        <attribute name="factsStored" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageStored" optional="YES" attributeType="Binary" syncable="YES"/>
     </entity>
     <entity name="FF_Face" representedClassName="Face_Flash.FF_Face" parentEntity="FaceBase" syncable="YES">
@@ -9,7 +10,7 @@
         <attribute name="middleNameStored" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="FaceBase" positionX="-63" positionY="-18" width="128" height="60"/>
+        <element name="FaceBase" positionX="-63" positionY="-18" width="128" height="75"/>
         <element name="FF_Face" positionX="-54" positionY="0" width="128" height="90"/>
     </elements>
 </model>

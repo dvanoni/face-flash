@@ -54,29 +54,6 @@ class FaceArray {
     if let moc = FF_CoreData.sharedInstance.managedObjectContext
     {
       
-      // Test Block - resets persistent store - false to test Core Data fetch
-      if false
-      {
-        if let psc = moc.persistentStoreCoordinator
-        {
-          if let psa = psc.persistentStores as? [NSPersistentStore]
-          {
-            assert(psa.count == 1)
-            if !moc.persistentStoreCoordinator!.removePersistentStore(psa[0], error: &error)
-            {
-              println("FaceArray: setFaces failed to remove persistent store")
-              abort()
-            }
-            if psc.addPersistentStoreWithType( NSSQLiteStoreType, configuration: nil,
-               URL: FF_CoreData.sharedInstance.persistentStoreURL, options: nil, error: &error) == nil
-            {
-              println("FaceArray: setFaces failed to create new persistent store")
-              abort()
-            }
-          }
-        }
-      }
-      
       var fetchRequest = NSFetchRequest()
       fetchRequest.entity = NSEntityDescription.entityForName("FaceBase", inManagedObjectContext: moc )
       var error: NSError? = nil
@@ -134,7 +111,30 @@ class FaceArray {
 
 class FaceBase: NSManagedObject {
   
+  @NSManaged var imageStored: NSData
+  @NSManaged var factsStored: String
   
+  // Tempory Variables (unmanaged working variables)
+  private var    factsQ: String? = nil
+  private var factsFlag: Bool = false
+  
+  private func getFacts() -> String
+  {
+    if self.factsQ == nil
+    {
+      if let fx = self.valueForKey("factsStored") as? String
+      {
+        self.factsQ = fx
+      }
+      else
+      {
+        self.factsQ = ""
+      }
+    }
+    return self.factsQ!
+  }
+  
+  // Computed Properties
   var  firstName: String { return "firstName" }
   var middleName: String { return "middleName" }
   var   lastName: String { return "lastName" }
@@ -166,9 +166,17 @@ class FaceBase: NSManagedObject {
     }
   }
   
-  @NSManaged var imageStored: NSData
-  //  @NSManaged var   factArray: Array<String>
-  var   factArray: Array<String> = []
+  // computed get only property
+  var   factArray: Array<String>
+  {
+    var fa: Array<String> = []
+    let facts = getFacts()
+    for fact in facts.sliceSequenceByCharacter("\n")
+    {
+      fa.append(fact)
+    }
+    return fa
+  }
   
   // This override initializer is needed for Core Data fetch
   private override init( entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext? )
@@ -191,12 +199,151 @@ class FaceBase: NSManagedObject {
     }
     
   }
+  
+  
+  //////////////////////////////////
+  // Methods
+  
+  private func findFactIndexAtCount( count: Int ) -> (facts: String, index: String.Index)?
+  {
+  
+    if count < 0 { return nil }
+    
+    let facts = self.getFacts()
+    
+    if facts.isEmpty { return nil }
+  
+    var i1 = facts.startIndex  // != facts.endIndex because facts is not empty
+    for k in 0 ..< count
+    {
+      while (i1 != facts.endIndex) && (facts[i1] != "\n") { i1 = i1.successor() }
+      if i1 == facts.endIndex { return nil }
+    }
 
+    return (facts, i1)
+    
+  }
+  
+  // Note:  findFactAtIndex does not return facts.endIndex, that is a nil return.
+  //        There must be an actual found fact to not return nil
+  private func findFactRangeAtCount( ix: Int ) -> (facts: String, Range<String.Index>)?
+  {
 
-  func addFact(fact: String) {
-    factArray.append(fact)
+    if let (facts, i) = findFactIndexAtCount(ix)
+    {
+      
+      var i1 = i
+
+      assert(facts[i1] == "\n")
+      i1 = i1.successor()
+      assert(i1 != facts.endIndex) // There should not be a newline at the end of the facts string
+ 
+      var i2 = i1
+      while (i2 != facts.endIndex) && (facts[i2] != "\n") { i2 = i2.successor() }
+
+      return ( facts, Range<String.Index>( start: i1, end: i2 ) )
+
+    }
+
+    return nil
+    
+  }
+  
+  ///////////////////////////
+  // Interface methods
+  
+  func addFact(newFact: String)
+  {
+    let facts = getFacts()
+    if facts.isEmpty
+    {
+      self.factsQ    = newFact
+    }
+    else
+    {
+      self.factsQ = facts + "\n" + newFact
+    }
+    self.factsFlag = true
+  }
+  
+  func removeFactAtIndex( ix: Int ) -> String?
+  {
+
+    if let (facts, factRange) = findFactRangeAtCount(ix)
+    {
+      let fact = facts[factRange]
+      if let (head, tail) = facts.splitAroundRange(factRange)
+      {
+        if head.isEmpty
+        {
+          self.factsQ = tail[ tail.startIndex.successor() ..< tail.endIndex ]           // remove leading "\n" on tail
+        }
+        else
+        {
+          self.factsQ = head[ head.startIndex ..< head.endIndex.predecessor() ] + tail  // remove trailing "\n" on head
+        }
+        self.factsFlag = true
+        return fact
+      }
+    }
+    
+    return nil
+    
+  }
+  
+  func insertFactAtIndex( ix: Int, newFact: String ) -> Bool
+  {
+    
+    if let (facts, i) = findFactIndexAtCount(ix)
+    {
+      if i == facts.startIndex
+      {
+        self.factsQ = newFact + "\n" + facts
+        self.factsFlag = true
+        return true
+      }
+      else
+      {
+        if let (head, tail) = facts.splitAtIndex(i)
+        {
+          assert(!head.isEmpty)
+          self.factsQ = head + "\n" + newFact + tail
+          self.factsFlag = true
+          return true
+        }
+      }
+    }
+
+    return false
+
   }
 
+  func changeFactAtIndex( ix: Int, changedFact: String ) -> Bool
+  {
+  
+    if let (facts, factRange) = findFactRangeAtCount(ix)
+    {
+      if let (head, tail) = facts.splitAroundRange(factRange)
+      {
+        self.factsQ = head + changedFact + tail
+        self.factsFlag = true
+        return true
+      }
+    }
+    return false
+  
+  }
+  
+  func prepareForStore()
+  {
+    if self.factsFlag
+    {
+      let facts = self.getFacts()
+      self.setValue(facts, forKey: "factsStored")
+      self.factsFlag = false
+    }
+  }
+  
 }
 
 
