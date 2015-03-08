@@ -20,6 +20,7 @@ func addHardCodedFaces()
   face.addFact("Married to Gabrielle")
   face.addFact("two daughters, Danielle and Clarissa")
   face.addFact("Profession: Semi-retired as Wireless systems engineer")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -29,6 +30,7 @@ func addHardCodedFaces()
   face.addFact("ASU Graduate")
   face.addFact("Boy")
   face.addFact("Software Developer")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -43,6 +45,7 @@ func addHardCodedFaces()
   face.addFact("3 Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text")
   face.addFact("4 Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text")
   face.addFact("5 Lots and lots and lots and lots and lots and lots and lots and lots and lots and lots and lots of text")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -52,6 +55,7 @@ func addHardCodedFaces()
   face.addFact("Went to UK")
   face.addFact("Degree in technology")
   face.addFact("Went to University of Kentucky")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -61,6 +65,7 @@ func addHardCodedFaces()
   face.addFact("Web Developer")
   face.addFact("Graphic Designer")
   face.addFact("Lives in Gilbert")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -69,6 +74,7 @@ func addHardCodedFaces()
   face.addFact("Worked with Bill Clinton")
   face.addFact("Travels alot")
   face.addFact("Fact 3")
+  face.prepareForStore()
 
   faceArray.addFace(face)
 
@@ -78,6 +84,7 @@ func addHardCodedFaces()
   face.addFact("iOS Developer")
   face.addFact("From Taiwan")
   face.addFact("ASU student")
+  face.prepareForStore()
 
   faceArray.addFace(face)
   

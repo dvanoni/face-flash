@@ -101,8 +101,20 @@ class FF_CoreData
     let urls = NSFileManager.defaultManager().URLsForDirectory( .DocumentDirectory, inDomains: .UserDomainMask )
     if let url = urls[urls.count-1] as? NSURL
     {
+
       self.documentsDirectory = url
       self.persistentStoreURL = url.URLByAppendingPathComponent("FaceFlash.sqlite")
+      
+      // Reset block
+      if true
+      {
+        let fm = NSFileManager()
+        var error: NSError? = nil
+        fm.removeItemAtURL(self.persistentStoreURL, error: &error)
+        fm.removeItemAtURL(url.URLByAppendingPathComponent("FaceFlash.sqlite-shm"), error: &error)
+        fm.removeItemAtURL(url.URLByAppendingPathComponent("FaceFlash.sqlite-wal"), error: &error)
+      }
+
     }
     else
     {
@@ -110,24 +122,6 @@ class FF_CoreData
       abort()
     }
 
-    // create managedObjectModel
-//    if let modelURL = NSBundle.mainBundle().URLForResource("FaceFlashCoreDataModel", withExtension: "momd")
-//    {
-//      if var mom = NSManagedObjectModel( contentsOfURL: modelURL )
-//      {
-//        self.managedObjectModel = mom
-//      }
-//      else
-//      {
-//        println("Failed to create managedObjectModel")
-//        abort()
-//      }
-//    }
-//    else
-//    {
-//      println("Failed to open FaceFlashDataModel.momd")
-//      abort()
-//    }
     if let mom = NSManagedObjectModel.mergedModelFromBundles(nil)
     {
       self.managedObjectModel = mom
