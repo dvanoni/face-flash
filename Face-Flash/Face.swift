@@ -118,7 +118,7 @@ class FaceBase: NSManagedObject {
   private var    factsQ: String? = nil
   private var factsFlag: Bool = false
   
-  private func getFacts() -> String
+  private func unwrapFacts() -> String
   {
     if self.factsQ == nil
     {
@@ -170,7 +170,7 @@ class FaceBase: NSManagedObject {
   var   factArray: Array<String>
   {
     var fa: Array<String> = []
-    let facts = getFacts()
+    let facts = unwrapFacts()
     for fact in facts.sliceSequenceByCharacter("\n")
     {
       fa.append(fact)
@@ -204,40 +204,54 @@ class FaceBase: NSManagedObject {
   //////////////////////////////////
   // Methods
   
+  // This function mjust finda fact in order to return non-nil.  It is not sufficient
+  // to just find count "\n"s - it must be follows by a non-empty substring.
   private func findFactIndexAtCount( count: Int ) -> (facts: String, index: String.Index)?
   {
   
     if count < 0 { return nil }
     
-    let facts = self.getFacts()
+    let facts = self.unwrapFacts()
     
     if facts.isEmpty { return nil }
   
-    var i1 = facts.startIndex  // != facts.endIndex because facts is not empty
-    for k in 0 ..< count
+    if count == 0
     {
-      while (i1 != facts.endIndex) && (facts[i1] != "\n") { i1 = i1.successor() }
-      if i1 == facts.endIndex { return nil }
+      return (facts, facts.startIndex)
     }
-
-    return (facts, i1)
+    else
+    {
+      
+      var i1 = facts.startIndex  // != facts.endIndex because facts is not empty
+      for k in 0 ..< count
+      {
+        while (i1 != facts.endIndex) && (facts[i1] != "\n") { i1 = i1.successor() }
+        if i1 == facts.endIndex { return nil }
+      }
+      
+      i1 = i1.successor()
+      if i1 == facts.endIndex
+      {
+        return nil
+      }
+      else
+      {
+        return (facts, i1)
+      }
+      
+    }
     
   }
   
   // Note:  findFactAtIndex does not return facts.endIndex, that is a nil return.
   //        There must be an actual found fact to not return nil
-  private func findFactRangeAtCount( ix: Int ) -> (facts: String, Range<String.Index>)?
+  
+  private func findFactRangeAtCount( count: Int ) -> (facts: String, Range<String.Index>)?
   {
 
-    if let (facts, i) = findFactIndexAtCount(ix)
+    if let (facts, i1) = findFactIndexAtCount(count)
     {
       
-      var i1 = i
-
-      assert(facts[i1] == "\n")
-      i1 = i1.successor()
-      assert(i1 != facts.endIndex) // There should not be a newline at the end of the facts string
- 
       var i2 = i1
       while (i2 != facts.endIndex) && (facts[i2] != "\n") { i2 = i2.successor() }
 
@@ -254,10 +268,10 @@ class FaceBase: NSManagedObject {
   
   func addFact(newFact: String)
   {
-    let facts = getFacts()
+    let facts = unwrapFacts()
     if facts.isEmpty
     {
-      self.factsQ    = newFact
+      self.factsQ = newFact
     }
     else
     {
@@ -338,7 +352,7 @@ class FaceBase: NSManagedObject {
   {
     if self.factsFlag
     {
-      let facts = self.getFacts()
+      let facts = self.unwrapFacts()
       self.setValue(facts, forKey: "factsStored")
       self.factsFlag = false
     }
@@ -362,7 +376,7 @@ class FF_Face: Face_Flash.FaceBase
   
   override var   fullName: String
   {
-    if middleName.isEmpty
+    if self.middleName.isEmpty
     {
       return self.firstNameStored + " " + self.lastNameStored
     }
