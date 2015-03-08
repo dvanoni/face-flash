@@ -10,17 +10,78 @@ import UIKit
 
 class QuizOptionsViewController: UITableViewController {
 
-  @IBOutlet weak var quizTabBarItem: UITabBarItem!
+  // TODO: Use proper collection of tags
+  private let fakeTags = ["Friends", "Arizona"]
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
-    self.tabBarItem = quizTabBarItem
   }
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
+  }
+
+  // MARK: - Actions
+
+  @IBAction func unwindToQuizOptions(segue: UIStoryboardSegue) {
+    
+  }
+
+  // MARK: - Table view data source
+
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    return 2
+  }
+
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    switch section {
+    case 0:
+      // TODO: Use proper collection of tags
+      return fakeTags.count
+    case 1:
+      return 1
+    default:
+      return 0
+    }
+  }
+
+  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    switch indexPath.section {
+    case 0:
+      let tagCell = tableView.dequeueReusableCellWithIdentifier("TagCell", forIndexPath: indexPath) as! UITableViewCell
+      // TODO: Use proper collection of tags
+      tagCell.textLabel?.text = fakeTags[indexPath.row]
+      return tagCell
+    case 1:
+      return tableView.dequeueReusableCellWithIdentifier("StartQuizCell", forIndexPath: indexPath) as! UITableViewCell
+    default:
+      return UITableViewCell()
+    }
+  }
+
+  override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    switch section {
+    case 0:
+      return "Select Tags"
+    default:
+      return nil
+    }
+  }
+
+  // MARK: Table view delegate
+
+  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    tableView.deselectRowAtIndexPath(indexPath, animated: false)
+
+    if let cell = tableView.cellForRowAtIndexPath(indexPath) where indexPath.section == 0 {
+      if cell.accessoryType == .None {
+        cell.accessoryType = .Checkmark
+      }
+      else {
+        cell.accessoryType = .None
+      }
+    }
   }
 
 }

@@ -133,34 +133,29 @@
                                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
-                                                <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="OCL-su-KZL" customClass="TagCell" customModule="Face_Flash" customModuleProvider="target">
+                                                <collectionViewCell multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TagCell" id="OCL-su-KZL" customClass="TagCell" customModule="Face_Flash" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                                         <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
                                                         <autoresizingMask key="autoresizingMask"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyc-7r-zbk">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="20"/>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" text="Tag" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyc-7r-zbk">
+                                                                <rect key="frame" x="9" y="3" width="22" height="14"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     </view>
                                                     <constraints>
-                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="leading" secondItem="OCL-su-KZL" secondAttribute="leading" id="Chv-rS-6wG"/>
-                                                        <constraint firstAttribute="trailing" secondItem="pyc-7r-zbk" secondAttribute="trailing" id="emm-hZ-1be"/>
-                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="top" secondItem="OCL-su-KZL" secondAttribute="top" id="p9w-Hb-FBd"/>
-                                                        <constraint firstAttribute="bottom" secondItem="pyc-7r-zbk" secondAttribute="bottom" id="zsn-RG-RTY"/>
+                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="leading" secondItem="OCL-su-KZL" secondAttribute="leading" constant="9" id="Chv-rS-6wG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="pyc-7r-zbk" secondAttribute="trailing" constant="9" id="emm-hZ-1be"/>
+                                                        <constraint firstItem="pyc-7r-zbk" firstAttribute="top" secondItem="OCL-su-KZL" secondAttribute="top" constant="3" id="p9w-Hb-FBd"/>
+                                                        <constraint firstAttribute="bottom" secondItem="pyc-7r-zbk" secondAttribute="bottom" constant="3" id="zsn-RG-RTY"/>
                                                     </constraints>
                                                     <connections>
-                                                        <outlet property="bottomConstraint" destination="zsn-RG-RTY" id="7yT-8v-R9O"/>
-                                                        <outlet property="leadingConstraint" destination="Chv-rS-6wG" id="MoE-Wt-0wi"/>
                                                         <outlet property="tagLabel" destination="pyc-7r-zbk" id="IgE-OK-Mvb"/>
-                                                        <outlet property="topConstraint" destination="p9w-Hb-FBd" id="aWM-XR-DcZ"/>
-                                                        <outlet property="trailingConstraint" destination="emm-hZ-1be" id="saK-Ef-C3u"/>
                                                     </connections>
                                                 </collectionViewCell>
                                             </cells>
