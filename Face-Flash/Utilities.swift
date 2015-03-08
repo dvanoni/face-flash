@@ -26,7 +26,7 @@ extension String
     {
       if self[ix] == c
       {
-        return ( self[self.startIndex...ix], self[ix.successor()...self.endIndex] )
+        return ( self[self.startIndex..<ix], self[ix.successor()..<self.endIndex] )
       }
     }
     return (self, nil)
@@ -93,6 +93,56 @@ extension String
   func sliceSequenceByCharacter( c: Character ) -> CharacterSliceSequence
   {
     return CharacterSliceSequence( c: c, str: self )
+  }
+  
+  // SplitAtIndex: if self.startIndex <= ix <= start.endIndex, returns (head, tail) where
+  //               head is self up to but not including ix, tail is self from ix inclusive,
+  //               and either may be empty if ix is at start or end.
+  //               returns nil for an invalid index
+  func splitAtIndex(ix: String.Index) -> (head: String, tail:String)?
+  {
+    if self.isEmpty
+    {
+      return nil
+    }
+    else
+    {
+      if ix == self.startIndex
+      {
+        return ("",self)
+      }
+      else
+      {
+        if ix < self.endIndex
+        {
+          return ( self[self.startIndex..<ix], self[ix..<self.endIndex] )
+        }
+        else
+        {
+          if ix == self.endIndex
+          {
+            return (self,"")
+          }
+          else
+          {
+            return nil
+          }
+        }
+      }
+    }
+  }
+  
+  // splitAroundRange is a generalization of splitAtIndex
+  func splitAroundRange(range: Range<String.Index>) -> (head: String, tail:String)?
+  {
+    if let (head, _) = self.splitAtIndex(range.startIndex)
+    {
+      if let (_, tail) = self.splitAtIndex(range.endIndex)
+      {
+        return (head,tail)
+      }
+    }
+    return nil
   }
   
 }
