@@ -20,10 +20,14 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
 
   @IBOutlet var textEditDoneButton: UIBarButtonItem!
 
+  /// Enum for managing sections of the table view.
   private enum Section: Int {
     case Face = 0, Facts
     static let count = 2
   }
+
+
+  // MARK: - UIViewController
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -62,6 +66,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     self.tableView.reloadData()
   }
 
+
   // MARK: - Actions
 
   @IBAction func editFaceImage(sender: AnyObject) {
@@ -87,6 +92,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
       textView.resignFirstResponder()
     }
   }
+
 
   // MARK: - Helper methods
 
@@ -127,6 +133,29 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     return true
   }
 
+  private func configureFaceCell(cell: FaceCell, forIndexPath indexPath: NSIndexPath) {
+    cell.updateFonts()
+    cell.nameTextField.text = self.face.fullName
+
+    if let image = self.face.image {
+      cell.faceImageView.image = image
+    }
+    else {
+      cell.imageEditButton.setTitle("Add Photo", forState: .Normal)
+    }
+  }
+
+  private func configureFactCell(cell: FactCell, forIndexPath indexPath: NSIndexPath) {
+    if indexPath.row < self.face.factArray.count {
+      setupFactTextView(cell.factTextView)
+      cell.factTextView.text = self.face.factArray[indexPath.row]
+    }
+    else {
+      setupAddFactTextView(cell.factTextView)
+    }
+  }
+
+
   // MARK: - Table view data source
 
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
@@ -149,24 +178,11 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     switch Section(rawValue: indexPath.section)! {
     case .Face:
       let faceCell = tableView.dequeueReusableCellWithIdentifier(FaceCell.reuseIdentifier, forIndexPath: indexPath) as! FaceCell
-      faceCell.updateFonts()
-      faceCell.nameTextField.text = self.face.fullName
-      if let image = self.face.image {
-        faceCell.faceImageView.image = image
-      }
-      else {
-        faceCell.imageEditButton.setTitle("Add Photo", forState: .Normal)
-      }
+      self.configureFaceCell(faceCell, forIndexPath: indexPath)
       return faceCell
     case .Facts:
       let factCell = tableView.dequeueReusableCellWithIdentifier(FactCell.reuseIdentifier, forIndexPath: indexPath) as! FactCell
-      if indexPath.row < self.face.factArray.count {
-        setupFactTextView(factCell.factTextView)
-        factCell.factTextView.text = self.face.factArray[indexPath.row]
-      }
-      else {
-        setupAddFactTextView(factCell.factTextView)
-      }
+      self.configureFactCell(factCell, forIndexPath: indexPath)
       return factCell
     }
   }
@@ -227,6 +243,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     }
   }
 
+
   // MARK: - Table view delegate
 
   override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
@@ -262,6 +279,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     return proposedDestinationIndexPath
   }
 
+
   // MARK: - Collection view data source
 
   func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -273,6 +291,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     tagCell.tagLabel.text = self.fakeTags[indexPath.item]
     return tagCell
   }
+
 
   // MARK: - Text field delegate
 
@@ -286,6 +305,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     // TODO: Save changes to name
     println("set name to: \(textField.text)")
   }
+
 
   // MARK: - Text view delegate
 
@@ -359,6 +379,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
     }
   }
 
+
   // MARK: - Image picker delegate
 
   func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
@@ -376,6 +397,7 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   func imagePickerControllerDidCancel(picker: UIImagePickerController) {
     picker.dismissViewControllerAnimated(true, completion: nil)
   }
+
 
   /*
   // MARK: - Navigation
