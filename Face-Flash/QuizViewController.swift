@@ -22,6 +22,8 @@ class QuizViewController: UIViewController {
   @IBOutlet weak var factsTextView: UITextView!
 
   @IBOutlet weak var buttonsView: UIView!
+  @IBOutlet weak var correctButton: UIButton!
+  @IBOutlet weak var incorrectButton: UIButton!
 
   private let facesToShow = QuizViewController.getShuffledFaceArray()
   private var answers = [Bool]()
@@ -35,6 +37,17 @@ class QuizViewController: UIViewController {
   private var countIncorrect: Int {
     return answers.count - countCorrect
   }
+  private var percentCorrect: Float {
+    return Float(countCorrect) / Float(answers.count)
+  }
+
+  private var correctColor: UIColor {
+    return correctButton.tintColor!
+  }
+  private var incorrectColor: UIColor {
+    return incorrectButton.tintColor!
+  }
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -49,6 +62,7 @@ class QuizViewController: UIViewController {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
+
 
   // MARK: - Actions
 
@@ -89,22 +103,11 @@ class QuizViewController: UIViewController {
     self.presentViewController(alert, animated: true, completion: nil)
   }
 
-  // MARK: - Helper methods
 
-  private class func getShuffledFaceArray() -> [FaceBase] {
-    var shuffledArray = [FaceBase]()
-    var remainingIndices = [Int](0..<FaceArray.sharedInstance.count)
-
-    for _ in 0..<FaceArray.sharedInstance.count {
-      let i = Int(arc4random_uniform(UInt32(remainingIndices.count)))
-      let randomIndex = remainingIndices.removeAtIndex(i)
-      shuffledArray.append(FaceArray.sharedInstance[randomIndex])
-    }
-
-    return shuffledArray
-  }
+  // MARK: - Quiz logic
 
   private func advanceQuiz() {
+    progressView.tintColor = correctColor.interpolateWithColor(incorrectColor, percentage: CGFloat(percentCorrect))
     progressView.setProgress(progress, animated: true)
     facesCountLabel.text = "Faces Viewed: \(answers.count)/\(facesToShow.count)"
 
@@ -160,6 +163,22 @@ class QuizViewController: UIViewController {
   }
 
 
+  // MARK: - Helper methods
+
+  private class func getShuffledFaceArray() -> [FaceBase] {
+    var shuffledArray = [FaceBase]()
+    var remainingIndices = [Int](0..<FaceArray.sharedInstance.count)
+
+    for _ in 0..<FaceArray.sharedInstance.count {
+      let i = Int(arc4random_uniform(UInt32(remainingIndices.count)))
+      let randomIndex = remainingIndices.removeAtIndex(i)
+      shuffledArray.append(FaceArray.sharedInstance[randomIndex])
+    }
+
+    return shuffledArray
+  }
+
+
   /*
   // MARK: - Navigation
 
@@ -170,4 +189,27 @@ class QuizViewController: UIViewController {
   }
   */
 
+}
+
+
+// MARK: - Extensions
+
+private extension UIColor {
+  func interpolateWithColor(otherColor: UIColor, percentage: CGFloat) -> UIColor {
+
+    func interpolateValue(value: CGFloat, otherValue: CGFloat) -> CGFloat {
+      return value * percentage + otherValue * (1.0 - percentage)
+    }
+
+    var hue1: CGFloat = 1.0, saturation1: CGFloat = 1.0, brightness1: CGFloat = 1.0, alpha1: CGFloat = 1.0
+    var hue2: CGFloat = 1.0, saturation2: CGFloat = 1.0, brightness2: CGFloat = 1.0, alpha2: CGFloat = 1.0
+
+    self.getHue(&hue1, saturation: &saturation1, brightness: &brightness1, alpha: &alpha1)
+    otherColor.getHue(&hue2, saturation: &saturation2, brightness: &brightness2, alpha: &alpha2)
+
+    return UIColor(hue: interpolateValue(hue1, hue2),
+            saturation: interpolateValue(saturation1, saturation2),
+            brightness: interpolateValue(brightness1, brightness2),
+                 alpha: interpolateValue(alpha1, alpha2))
+  }
 }

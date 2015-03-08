@@ -136,12 +136,12 @@
                                     <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uLj-x1-PrX" userLabel="Buttons">
                                         <rect key="frame" x="220" y="464" width="160" height="64"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkV-Wk-6ph">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZkV-Wk-6ph" userLabel="Correct Button">
                                                 <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="ZkV-Wk-6ph" secondAttribute="height" multiplier="1:1" id="vDm-kr-maZ"/>
                                                 </constraints>
-                                                <color key="tintColor" red="0.20000000000000001" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.15686274509803921" green="0.76078431372549016" blue="0.19215686274509805" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="QuizButtonCorrect">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -149,12 +149,12 @@
                                                     <action selector="markCorrect:" destination="Jab-Io-LzU" eventType="touchUpInside" id="hJK-kc-nDK"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEe-et-azc">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bEe-et-azc" userLabel="Incorrect Button">
                                                 <rect key="frame" x="96" y="0.0" width="64" height="64"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="bEe-et-azc" secondAttribute="height" multiplier="1:1" id="KOX-8s-0vQ"/>
                                                 </constraints>
-                                                <color key="tintColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="tintColor" red="0.98431372549019602" green="0.27843137254901962" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
                                                 <state key="normal" image="QuizButtonIncorrect">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -206,9 +206,11 @@
                         <outlet property="cardBackView" destination="agb-ul-ulC" id="2WW-KC-62D"/>
                         <outlet property="cardFrontView" destination="JqC-Qv-wPt" id="rP3-ZW-AQF"/>
                         <outlet property="cardView" destination="IUL-zh-Zr1" id="Yug-69-tON"/>
+                        <outlet property="correctButton" destination="ZkV-Wk-6ph" id="P95-uk-y3E"/>
                         <outlet property="faceImageView" destination="db5-mN-wxH" id="piR-zN-z6T"/>
                         <outlet property="facesCountLabel" destination="zF1-CB-tqE" id="jhZ-2m-D9u"/>
                         <outlet property="factsTextView" destination="6y9-8M-mki" id="3NQ-Tf-bvA"/>
+                        <outlet property="incorrectButton" destination="bEe-et-azc" id="PCW-Z4-wEF"/>
                         <outlet property="nameLabel" destination="fBy-pM-kxh" id="Dad-X3-jha"/>
                         <outlet property="progressView" destination="Hgf-Ff-sUk" id="j63-Vo-pzc"/>
                     </connections>
