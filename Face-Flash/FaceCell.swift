@@ -30,6 +30,9 @@ class FaceCell: UITableViewCell {
     faceImageView.layer.cornerRadius = faceImageView.frame.height * 0.5
     faceImageView.addSubview(imageEditContainerView)
 
+    firstNameTextField.addBottomBorder()
+    lastNameTextField.addBottomBorder()
+
     if let flowLayout = self.tagsCollectionView.collectionViewLayout as? UICollectionViewFlowLayout {
       // Set estimated size to enable automatic cell sizing
       flowLayout.estimatedItemSize = CGSize(width: 40.0, height: 20.0)

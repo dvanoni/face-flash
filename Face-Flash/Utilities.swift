@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 ///////////////////////////////////////////////
@@ -145,5 +146,38 @@ extension String
     return nil
   }
   
+}
+
+
+extension UIView
+{
+  /// Add a single-pixel bottom border to the view using Auto Layout.
+  ///
+  /// :param: color The color of the border. Default is light gray.
+  func addBottomBorder(color: UIColor = UIColor.lightGrayColor())
+  {
+    let border = UIView(frame: CGRectZero)
+    border.backgroundColor = color
+    border.setTranslatesAutoresizingMaskIntoConstraints(false)
+    self.addSubview(border)
+
+    let borderWidth = 1.0 / UIScreen.mainScreen().scale
+
+    // Set height constraint to borderWidth
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Height,
+      relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
+      multiplier: 1.0, constant: borderWidth))
+
+    // Add constraints to pin border to leading, trailing, and bottom edges of this view
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Leading,
+      relatedBy: .Equal, toItem: self, attribute: .Leading,
+      multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Trailing,
+      relatedBy: .Equal, toItem: self, attribute: .Trailing,
+      multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Bottom,
+      relatedBy: .Equal, toItem: self, attribute: .Bottom,
+      multiplier: 1.0, constant: 0.0))
+  }
 }
 
