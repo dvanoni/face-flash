@@ -15,9 +15,15 @@ class FaceCell: UITableViewCell {
   @IBOutlet weak var faceImageView: UIImageView!
   @IBOutlet weak var imageEditContainerView: UIVisualEffectView!
   @IBOutlet weak var imageEditButton: UIButton!
-  @IBOutlet weak var nameTextField: UITextField!
+
+  @IBOutlet weak var infoDisplayView: UIView!
+  @IBOutlet weak var fullNameLabel: UILabel!
   @IBOutlet weak var tagsCollectionView: UICollectionView!
 
+  @IBOutlet weak var infoEditView: UIView!
+  @IBOutlet weak var firstNameTextField: UITextField!
+  @IBOutlet weak var lastNameTextField: UITextField!
+  
   override func awakeFromNib() {
     super.awakeFromNib()
 
@@ -37,20 +43,37 @@ class FaceCell: UITableViewCell {
     super.setEditing(editing, animated: animated)
 
     imageEditContainerView.hidden = !editing
-    nameTextField.enabled = editing
-    nameTextField.borderStyle = editing ? .RoundedRect : .None
+
+    // Determine which views to show/hide
+    let fromView, toView: UIView
+    if editing {
+      fromView = self.infoDisplayView
+      toView = self.infoEditView
+    }
+    else {
+      fromView = self.infoEditView
+      toView = self.infoDisplayView
+      // Stop any text input
+      self.endEditing(false)
+    }
+
+    let animationOptions: UIViewAnimationOptions = .ShowHideTransitionViews | .TransitionCrossDissolve
+
+    UIView.transitionFromView(fromView, toView: toView, duration: 0.5, options: animationOptions, completion: nil)
   }
 
   override func tintColorDidChange() {
     updateColors()
   }
 
-  func updateFonts() {
-    nameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
-  }
-
   func updateColors() {
     faceImageView.tintColor = self.tintColor
+  }
+
+  func updateFonts() {
+    fullNameLabel.font = UIFont.preferredFontForTextStyle(UIFontTextStyleHeadline)
+    firstNameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
+    lastNameTextField.font = UIFont.preferredFontForTextStyle(UIFontTextStyleBody)
   }
 
 }

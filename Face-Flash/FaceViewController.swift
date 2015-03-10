@@ -15,7 +15,9 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   // TODO: Use proper collection of tags
   private let fakeTags = ["Friends", "Arizona"]
 
-  private var activeTextView: UITextView?
+  private weak var faceCell: FaceCell?
+
+  private weak var activeTextView: UITextView?
   private var activeTextViewPrevHeight: CGFloat?
 
   @IBOutlet var textEditDoneButton: UIBarButtonItem!
@@ -134,8 +136,13 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   }
 
   private func configureFaceCell(cell: FaceCell, forIndexPath indexPath: NSIndexPath) {
+    self.faceCell = cell
+
     cell.updateFonts()
-    cell.nameTextField.text = self.face.fullName
+
+    cell.fullNameLabel.text = self.face.fullName
+    cell.firstNameTextField.text = self.face.firstName
+    cell.lastNameTextField.text = self.face.lastName
 
     if let image = self.face.image {
       cell.faceImageView.image = image
@@ -296,14 +303,27 @@ class FaceViewController: UITableViewController, UICollectionViewDataSource, UIT
   // MARK: - Text field delegate
 
   func textFieldShouldReturn(textField: UITextField) -> Bool {
-    // Dismiss keyboard when return key is pressed
-    textField.resignFirstResponder()
+    if let cell = self.faceCell where textField == cell.firstNameTextField {
+      // Pressing return on firstNameTextField jumps to lastNameTextField
+      cell.lastNameTextField.becomeFirstResponder()
+    }
+    else {
+      // Dismiss keyboard when return key is pressed
+      textField.resignFirstResponder()
+    }
     return false
   }
 
   func textFieldDidEndEditing(textField: UITextField) {
     // TODO: Save changes to name
-    println("set name to: \(textField.text)")
+    if let cell = self.faceCell {
+      if textField == cell.firstNameTextField {
+        println("TODO: Set firstName to: \(textField.text)")
+      }
+      else if textField == cell.lastNameTextField {
+        println("TODO: Set lastName to: \(textField.text)")
+      }
+    }
   }
 
 
