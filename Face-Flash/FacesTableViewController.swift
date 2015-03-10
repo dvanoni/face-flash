@@ -124,14 +124,3 @@ class FacesTableViewController: UITableViewController {
   }
 
 }
-
-private extension UITableView {
-  func hasRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
-    if indexPath.section < self.numberOfSections() {
-      if indexPath.row < self.numberOfRowsInSection(indexPath.section) {
-        return true
-      }
-    }
-    return false
-  }
-}

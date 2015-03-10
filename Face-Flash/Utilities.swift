@@ -13,6 +13,8 @@ import UIKit
 ///////////////////////////////////////////////
 // Extensions
 
+// MARK: - String
+
 extension String
 {
   
@@ -149,6 +151,8 @@ extension String
 }
 
 
+// MARK: - UIView
+
 extension UIView
 {
   /// Add a single-pixel bottom border to the view using Auto Layout.
@@ -164,20 +168,62 @@ extension UIView
     let borderWidth = 1.0 / UIScreen.mainScreen().scale
 
     // Set height constraint to borderWidth
-    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Height,
-      relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute,
-      multiplier: 1.0, constant: borderWidth))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Height, relatedBy: .Equal, toItem: nil, attribute: .NotAnAttribute, multiplier: 1.0, constant: borderWidth))
 
     // Add constraints to pin border to leading, trailing, and bottom edges of this view
-    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Leading,
-      relatedBy: .Equal, toItem: self, attribute: .Leading,
-      multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Trailing,
-      relatedBy: .Equal, toItem: self, attribute: .Trailing,
-      multiplier: 1.0, constant: 0.0))
-    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Bottom,
-      relatedBy: .Equal, toItem: self, attribute: .Bottom,
-      multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Leading, relatedBy: .Equal, toItem: self, attribute: .Leading, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Trailing, relatedBy: .Equal, toItem: self, attribute: .Trailing, multiplier: 1.0, constant: 0.0))
+    self.addConstraint(NSLayoutConstraint(item: border, attribute: .Bottom, relatedBy: .Equal, toItem: self, attribute: .Bottom, multiplier: 1.0, constant: 0.0))
   }
 }
 
+
+// MARK: - UITableView
+
+extension UITableView
+{
+  /// Returns a Boolean value indicating whether the table-view has a row at the specified index path.
+  ///
+  /// :param: indexPath The index path to look for in the table-view.
+  ///
+  /// :returns: `true` if a row exists at `indexPath`, `false` otherwise.
+  func hasRowAtIndexPath(indexPath: NSIndexPath) -> Bool {
+    if indexPath.section < self.numberOfSections() {
+      if indexPath.row < self.numberOfRowsInSection(indexPath.section) {
+        return true
+      }
+    }
+    return false
+  }
+}
+
+
+// MARK: - UIColor
+
+extension UIColor
+{
+  /// Return a color that is an interpolation between this color and `otherColor`,
+  /// using `percentage` to determine the resulting interpolation amount.
+  ///
+  /// :param: otherColor The color to interpolate with this color.
+  /// :param: percentage The percentage of this color to be interpolated with `otherColor`.
+  ///                    This should be a value between 0.0 and 1.0, where 0.0 corresponds
+  ///                    to using the `otherColor` entirely and 1.0 corresponds to using
+  ///                    this color entirely.
+  ///
+  /// :returns: The interpolated color.
+  func interpolateWithColor(otherColor: UIColor, percentage: CGFloat) -> UIColor {
+
+    func interpolateValue(value: CGFloat, otherValue: CGFloat) -> CGFloat {
+      return value * percentage + otherValue * (1.0 - percentage)
+    }
+
+    var hue1: CGFloat = 1.0, saturation1: CGFloat = 1.0, brightness1: CGFloat = 1.0, alpha1: CGFloat = 1.0
+    var hue2: CGFloat = 1.0, saturation2: CGFloat = 1.0, brightness2: CGFloat = 1.0, alpha2: CGFloat = 1.0
+
+    self.getHue(&hue1, saturation: &saturation1, brightness: &brightness1, alpha: &alpha1)
+    otherColor.getHue(&hue2, saturation: &saturation2, brightness: &brightness2, alpha: &alpha2)
+
+    return UIColor(hue: interpolateValue(hue1, hue2), saturation: interpolateValue(saturation1, saturation2), brightness: interpolateValue(brightness1, brightness2), alpha: interpolateValue(alpha1, alpha2))
+  }
+}

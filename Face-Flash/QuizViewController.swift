@@ -190,26 +190,3 @@ class QuizViewController: UIViewController {
   */
 
 }
-
-
-// MARK: - Extensions
-
-private extension UIColor {
-  func interpolateWithColor(otherColor: UIColor, percentage: CGFloat) -> UIColor {
-
-    func interpolateValue(value: CGFloat, otherValue: CGFloat) -> CGFloat {
-      return value * percentage + otherValue * (1.0 - percentage)
-    }
-
-    var hue1: CGFloat = 1.0, saturation1: CGFloat = 1.0, brightness1: CGFloat = 1.0, alpha1: CGFloat = 1.0
-    var hue2: CGFloat = 1.0, saturation2: CGFloat = 1.0, brightness2: CGFloat = 1.0, alpha2: CGFloat = 1.0
-
-    self.getHue(&hue1, saturation: &saturation1, brightness: &brightness1, alpha: &alpha1)
-    otherColor.getHue(&hue2, saturation: &saturation2, brightness: &brightness2, alpha: &alpha2)
-
-    return UIColor(hue: interpolateValue(hue1, hue2),
-            saturation: interpolateValue(saturation1, saturation2),
-            brightness: interpolateValue(brightness1, brightness2),
-                 alpha: interpolateValue(alpha1, alpha2))
-  }
-}
